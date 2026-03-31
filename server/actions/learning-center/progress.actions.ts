@@ -17,7 +17,7 @@ import {
   validateInput,
 } from "@/server/actions/_common";
 import { getSessionThrowable } from "@/server/actions/auth";
-import { cacheLife, cacheTag, updateTag } from "next/cache";
+import { cacheLife, cacheTag, revalidateTag } from "next/cache";
 
 /**
  * Read Actions
@@ -58,9 +58,9 @@ export async function markMaterialCompleted(
 
     await ProgressService.markMaterialCompleted(parsedInput);
 
-    updateTag("courseProgress");
-    updateTag(parsedInput.userId);
-    updateTag(parsedInput.materialId);
+    revalidateTag("courseProgress", "max");
+    revalidateTag(parsedInput.userId, "max");
+    revalidateTag(parsedInput.materialId, "max");
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -75,9 +75,9 @@ export async function validateQuizAndComplete(
 
     await ProgressService.validateQuizAndComplete(parsedInput);
 
-    updateTag("courseProgress");
-    updateTag(parsedInput.userId);
-    updateTag(parsedInput.materialId);
+    revalidateTag("courseProgress", "max");
+    revalidateTag(parsedInput.userId, "max");
+    revalidateTag(parsedInput.materialId, "max");
   } catch (error) {
     return handleServerActionError(error);
   }

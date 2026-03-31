@@ -29,6 +29,13 @@ import { updateTag } from "next/cache";
 import { cacheLife } from "next/cache";
 import { cacheTag } from "next/cache";
 
+type CreatedCoursePayload = {
+  id: string;
+  title: string;
+  description: string;
+  isArchived: boolean;
+};
+
 /**
  * Read Actions
  */
@@ -70,14 +77,20 @@ export async function getCourseHierarchy(input: GetCourseHierarchyInput) {
 
 export async function createCourse(
   input: CreateCourseInput,
-): Promise<ServerActionResponse<void>> {
+): Promise<ServerActionResponse<CreatedCoursePayload>> {
   try {
     await getSessionThrowable(true);
     const parsedInput = validateInput(createCourseSchema, input);
 
-    await CourseService.createCourse(parsedInput);
+    const created = await CourseService.createCourse(parsedInput);
 
     updateTag("courses");
+    return {
+      id: created.id,
+      title: created.title,
+      description: created.description ?? "",
+      isArchived: created.isArchived,
+    };
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -94,6 +107,7 @@ export async function updateCourse(
 
     updateTag("courses");
     updateTag("courseById");
+    updateTag("courseHierarchy");
     updateTag(parsedInput.id);
   } catch (error) {
     return handleServerActionError(error);
@@ -111,6 +125,7 @@ export async function archiveCourse(
 
     updateTag("courses");
     updateTag("courseById");
+    updateTag("courseHierarchy");
     updateTag(parsedInput.id);
   } catch (error) {
     return handleServerActionError(error);
@@ -128,6 +143,7 @@ export async function unarchiveCourse(
 
     updateTag("courses");
     updateTag("courseById");
+    updateTag("courseHierarchy");
     updateTag(parsedInput.id);
   } catch (error) {
     return handleServerActionError(error);
@@ -145,6 +161,7 @@ export async function deleteCourse(
 
     updateTag("courses");
     updateTag("courseById");
+    updateTag("courseHierarchy");
     updateTag(parsedInput.id);
   } catch (error) {
     return handleServerActionError(error);

@@ -25,6 +25,13 @@ import { updateTag } from "next/cache";
 import { cacheLife } from "next/cache";
 import { cacheTag } from "next/cache";
 
+type CreatedChapterPayload = {
+  id: string;
+  courseId: string;
+  title: string;
+  sequenceOrder: number;
+};
+
 /**
  * Read Actions
  */
@@ -57,15 +64,22 @@ export async function getChaptersByCourse(input: ListChaptersByCourseInput) {
 
 export async function createChapter(
   input: CreateChapterInput,
-): Promise<ServerActionResponse<void>> {
+): Promise<ServerActionResponse<CreatedChapterPayload>> {
   try {
     await getSessionThrowable(true);
     const parsedInput = validateInput(createChapterSchema, input);
 
-    await ChapterService.createChapter(parsedInput);
+    const created = await ChapterService.createChapter(parsedInput);
 
     updateTag("chaptersByCourse");
+    updateTag("courseHierarchy");
     updateTag(parsedInput.courseId);
+    return {
+      id: created.id,
+      courseId: created.courseId,
+      title: created.title,
+      sequenceOrder: created.sequenceOrder,
+    };
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -78,11 +92,13 @@ export async function updateChapter(
     await getSessionThrowable(true);
     const parsedInput = validateInput(updateChapterSchema, input);
 
-    await ChapterService.updateChapter(parsedInput);
+    const updated = await ChapterService.updateChapter(parsedInput);
 
     updateTag("chapterById");
     updateTag(parsedInput.id);
     updateTag("chaptersByCourse");
+    updateTag("courseHierarchy");
+    updateTag(updated.courseId);
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -95,11 +111,13 @@ export async function deleteChapter(
     await getSessionThrowable(true);
     const parsedInput = validateInput(deleteChapterSchema, input);
 
-    await ChapterService.deleteChapter(parsedInput);
+    const deleted = await ChapterService.deleteChapter(parsedInput);
 
     updateTag("chapterById");
     updateTag(parsedInput.id);
     updateTag("chaptersByCourse");
+    updateTag("courseHierarchy");
+    updateTag(deleted.courseId);
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -115,6 +133,7 @@ export async function resequenceChapters(
     await ChapterService.resequenceChapters(parsedInput);
 
     updateTag("chaptersByCourse");
+    updateTag("courseHierarchy");
     updateTag(parsedInput.courseId);
   } catch (error) {
     return handleServerActionError(error);

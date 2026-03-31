@@ -22,7 +22,7 @@ export const ADMIN_DASHBOARD_ROUTES: DashboardRoute[] = DASHBOARD_ROUTES.concat(
   [
     {
       label: "Manajemen Kursus",
-      href: "/learning-center/admin/courses",
+      href: "/learning-center/dashboard/admin/courses",
     },
   ],
 );

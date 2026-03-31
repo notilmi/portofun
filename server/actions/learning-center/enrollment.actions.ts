@@ -27,7 +27,7 @@ import {
   validateInput,
 } from "@/server/actions/_common";
 import { getSessionThrowable } from "@/server/actions/auth";
-import { cacheLife, cacheTag, updateTag } from "next/cache";
+import { cacheLife, cacheTag, revalidateTag } from "next/cache";
 
 /**
  * Read Actions
@@ -88,11 +88,11 @@ export async function enrollUser(
 
     await EnrollmentService.enrollUser(parsedInput);
 
-    updateTag("enrollmentsByCourse");
-    updateTag(parsedInput.courseId);
-    updateTag("enrollmentsByUser");
-    updateTag(parsedInput.userId);
-    updateTag("enrollment");
+    revalidateTag("enrollmentsByCourse", "max");
+    revalidateTag(parsedInput.courseId, "max");
+    revalidateTag("enrollmentsByUser", "max");
+    revalidateTag(parsedInput.userId, "max");
+    revalidateTag("enrollment", "max");
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -107,11 +107,11 @@ export async function markEnrollmentAsCompleted(
 
     await EnrollmentService.markAsCompleted(parsedInput);
 
-    updateTag("enrollmentsByCourse");
-    updateTag(parsedInput.courseId);
-    updateTag("enrollmentsByUser");
-    updateTag(parsedInput.userId);
-    updateTag("enrollment");
+    revalidateTag("enrollmentsByCourse", "max");
+    revalidateTag(parsedInput.courseId, "max");
+    revalidateTag("enrollmentsByUser", "max");
+    revalidateTag(parsedInput.userId, "max");
+    revalidateTag("enrollment", "max");
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -126,11 +126,11 @@ export async function dropEnrollmentCourse(
 
     await EnrollmentService.dropCourse(parsedInput);
 
-    updateTag("enrollmentsByCourse");
-    updateTag(parsedInput.courseId);
-    updateTag("enrollmentsByUser");
-    updateTag(parsedInput.userId);
-    updateTag("enrollment");
+    revalidateTag("enrollmentsByCourse", "max");
+    revalidateTag(parsedInput.courseId, "max");
+    revalidateTag("enrollmentsByUser", "max");
+    revalidateTag(parsedInput.userId, "max");
+    revalidateTag("enrollment", "max");
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -145,11 +145,11 @@ export async function updateEnrollmentStatus(
 
     await EnrollmentService.updateEnrollmentStatus(parsedInput);
 
-    updateTag("enrollmentById");
-    updateTag(parsedInput.enrollmentId);
-    updateTag("enrollmentsByCourse");
-    updateTag("enrollmentsByUser");
-    updateTag("enrollment");
+    revalidateTag("enrollmentById", "max");
+    revalidateTag(parsedInput.enrollmentId, "max");
+    revalidateTag("enrollmentsByCourse", "max");
+    revalidateTag("enrollmentsByUser", "max");
+    revalidateTag("enrollment", "max");
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -164,11 +164,11 @@ export async function deleteEnrollment(
 
     await EnrollmentService.deleteEnrollment(parsedInput);
 
-    updateTag("enrollmentById");
-    updateTag(parsedInput.enrollmentId);
-    updateTag("enrollmentsByCourse");
-    updateTag("enrollmentsByUser");
-    updateTag("enrollment");
+    revalidateTag("enrollmentById", "max");
+    revalidateTag(parsedInput.enrollmentId, "max");
+    revalidateTag("enrollmentsByCourse", "max");
+    revalidateTag("enrollmentsByUser", "max");
+    revalidateTag("enrollment", "max");
   } catch (error) {
     return handleServerActionError(error);
   }
