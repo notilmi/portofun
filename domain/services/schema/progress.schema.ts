@@ -19,7 +19,7 @@ export const uuidSchema = z.string().uuid();
  * Mark a material completed (idempotent).
  */
 export const markMaterialCompletedSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   materialId: uuidSchema,
 });
 
@@ -44,7 +44,7 @@ export type QuizAnswerInput = z.infer<typeof quizAnswerSchema>;
  * Validate quiz answers for a quiz material, then mark completed.
  */
 export const validateQuizAndCompleteSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   materialId: uuidSchema,
   answers: z.array(quizAnswerSchema),
 });
@@ -57,7 +57,7 @@ export type ValidateQuizAndCompleteInput = z.infer<
  * Get a user progress record for a material.
  */
 export const getProgressSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   materialId: uuidSchema,
 });
 
@@ -67,7 +67,7 @@ export type GetProgressInput = z.infer<typeof getProgressSchema>;
  * List progress for all materials in a course for a user.
  */
 export const listCourseProgressSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   courseId: uuidSchema,
 });
 

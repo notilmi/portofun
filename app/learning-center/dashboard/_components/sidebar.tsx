@@ -1,8 +1,14 @@
 "use client";
 import Link from "next/link";
-import { DASHBOARD_ROUTES, DashboardRoute } from "./sidebar.constants";
+import {
+  DASHBOARD_ROUTES,
+  DashboardRoute,
+  getDashboardRoutes,
+} from "./sidebar.constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { authClient } from "@/server/better-auth/auth.client";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function SidebarMenu({ href, label }: DashboardRoute) {
   const pathname = usePathname();
@@ -21,11 +27,18 @@ function SidebarMenu({ href, label }: DashboardRoute) {
 }
 
 export default function Sidebar() {
+  const { data: session, isPending } = authClient.useSession();
+  console.log("User session in Sidebar:", session);
+
   return (
     <div className="flex flex-col gap-1">
-      {DASHBOARD_ROUTES.map((route) => (
-        <SidebarMenu key={route.href} {...route} />
-      ))}
+           {isPending
+        ? Array.from({ length: 5 }).map((_, idx) => (
+            <Skeleton key={idx} className="h-12 w-full rounded-md" />
+          ))
+        : getDashboardRoutes(session?.user?.role === "admin").map((route) => (
+            <SidebarMenu key={route.href} {...route} />
+          ))}
     </div>
   );
 }

@@ -181,12 +181,13 @@ export class EnrollmentService {
    */
   static async listEnrollmentsByUser(
     input: ListEnrollmentsByUserInput,
-  ): Promise<Enrollment[]> {
+  ) {
     return await prisma.enrollment.findMany({
       where: {
         userId: input.userId,
         ...(input.status ? { status: input.status } : {}),
       },
+      include: {course: true},
       orderBy: { createdAt: "desc" },
       skip: input.skip,
       take: input.take,

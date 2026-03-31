@@ -23,7 +23,7 @@ export type EnrollmentStatus = z.infer<typeof enrollmentStatusSchema>;
  * Enroll a user in a course (idempotent behavior in service).
  */
 export const enrollUserSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   courseId: uuidSchema,
 });
 export type EnrollUserInput = z.infer<typeof enrollUserSchema>;
@@ -40,7 +40,7 @@ export type GetEnrollmentByIdInput = z.infer<typeof getEnrollmentByIdSchema>;
  * Lookup enrollment by unique composite (userId, courseId).
  */
 export const getEnrollmentSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   courseId: uuidSchema,
 });
 export type GetEnrollmentInput = z.infer<typeof getEnrollmentSchema>;
@@ -62,7 +62,7 @@ export type ListEnrollmentsByCourseInput = z.infer<
  * List enrollments for a user with optional status and pagination.
  */
 export const listEnrollmentsByUserSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   status: enrollmentStatusSchema.optional(),
   skip: z.number().int().min(0).optional(),
   take: z.number().int().min(1).max(100).optional(),
@@ -75,7 +75,7 @@ export type ListEnrollmentsByUserInput = z.infer<
  * Mark enrollment as completed (service sets status to COMPLETED).
  */
 export const markAsCompletedSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   courseId: uuidSchema,
 });
 export type MarkAsCompletedInput = z.infer<typeof markAsCompletedSchema>;
@@ -84,7 +84,7 @@ export type MarkAsCompletedInput = z.infer<typeof markAsCompletedSchema>;
  * Drop a course (service sets status to DROPPED).
  */
 export const dropCourseSchema = z.object({
-  userId: uuidSchema,
+  userId: z.string(),
   courseId: uuidSchema,
 });
 export type DropCourseInput = z.infer<typeof dropCourseSchema>;
