@@ -13,6 +13,7 @@ import {
 } from "@/domain/services/schema/progress.schema";
 import {
   handleServerActionError,
+  ServerActionError,
   type ServerActionResponse,
   validateInput,
 } from "@/server/actions/_common";
@@ -53,31 +54,56 @@ export async function markMaterialCompleted(
   input: MarkMaterialCompletedInput,
 ): Promise<ServerActionResponse<void>> {
   try {
-    await getSessionThrowable(true);
+    // Any logged-in user can complete materials, but only for themselves.
+    const session = await getSessionThrowable(false);
     const parsedInput = validateInput(markMaterialCompletedSchema, input);
+
+    if (parsedInput.userId !== session.id) {
+      throw new ServerActionError("Forbidden", "FORBIDDEN");
+    }
 
     await ProgressService.markMaterialCompleted(parsedInput);
 
+    // Only use supported cacheLife profiles here.
     revalidateTag("courseProgress", "max");
-    revalidateTag(parsedInput.userId, "max");
-    revalidateTag(parsedInput.materialId, "max");
+    revalidateTag("progress", "max");
   } catch (error) {
     return handleServerActionError(error);
   }
 }
 
+export type ValidateQuizAndCompleteResult = {
+  correct: boolean;
+  results: Array<{
+    questionId: string;
+    correct: boolean;
+    expected: string;
+    received: string;
+  }>;
+};
+
 export async function validateQuizAndComplete(
   input: ValidateQuizAndCompleteInput,
-): Promise<ServerActionResponse<void>> {
+): Promise<ServerActionResponse<ValidateQuizAndCompleteResult>> {
   try {
-    await getSessionThrowable(true);
+    // Any logged-in user can take quizzes, but only for themselves.
+    const session = await getSessionThrowable(false);
     const parsedInput = validateInput(validateQuizAndCompleteSchema, input);
 
-    await ProgressService.validateQuizAndComplete(parsedInput);
+    if (parsedInput.userId !== session.id) {
+      throw new ServerActionError("Forbidden", "FORBIDDEN");
+    }
 
+    const result = await ProgressService.validateQuizAndComplete(parsedInput);
+
+    // Refresh progress caches.
     revalidateTag("courseProgress", "max");
-    revalidateTag(parsedInput.userId, "max");
-    revalidateTag(parsedInput.materialId, "max");
+    revalidateTag("progress", "max");
+
+    return {
+      correct: result.correct,
+      results: result.results,
+    };
   } catch (error) {
     return handleServerActionError(error);
   }

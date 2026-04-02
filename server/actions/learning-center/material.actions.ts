@@ -23,7 +23,7 @@ import {
   validateInput,
 } from "@/server/actions/_common";
 import { getSessionThrowable } from "@/server/actions/auth";
-import { cacheLife, cacheTag, revalidateTag } from "next/cache";
+import { cacheLife, cacheTag, updateTag } from "next/cache";
 
 /**
  * Read Actions
@@ -66,8 +66,9 @@ export async function createMaterial(
 
     await MaterialService.createMaterial(parsedInput);
 
-    revalidateTag("materialsByChapter", "max");
-    revalidateTag(parsedInput.chapterId, "max");
+    // Invalidate material list cache for this chapter
+    updateTag("materialsByChapter");
+    updateTag(parsedInput.chapterId);
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -80,11 +81,17 @@ export async function updateMaterial(
     await getSessionThrowable(true);
     const parsedInput = validateInput(updateMaterialSchema, input);
 
+    // Fetch material before update to get chapterId for cache invalidation
+    const material = await MaterialService.getMaterialById({
+      id: parsedInput.id,
+    });
+
     await MaterialService.updateMaterial(parsedInput);
 
-    revalidateTag("materialById", "max");
-    revalidateTag(parsedInput.id, "max");
-    revalidateTag("materialsByChapter", "max");
+    updateTag("materialById");
+    updateTag("materialsByChapter");
+    updateTag(parsedInput.id);
+    updateTag(material.chapterId);
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -99,9 +106,9 @@ export async function archiveMaterial(
 
     await MaterialService.archiveMaterial(parsedInput);
 
-    revalidateTag("materialById", "max");
-    revalidateTag(parsedInput.id, "max");
-    revalidateTag("materialsByChapter", "max");
+    updateTag("materialById");
+    updateTag("materialsByChapter");
+    updateTag(parsedInput.id);
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -116,9 +123,8 @@ export async function deleteMaterial(
 
     await MaterialService.deleteMaterial(parsedInput);
 
-    revalidateTag("materialById", "max");
-    revalidateTag(parsedInput.id, "max");
-    revalidateTag("materialsByChapter", "max");
+    updateTag("materialById");
+    updateTag("materialsByChapter");
   } catch (error) {
     return handleServerActionError(error);
   }
@@ -133,8 +139,8 @@ export async function resequenceMaterials(
 
     await MaterialService.resequenceMaterials(parsedInput);
 
-    revalidateTag("materialsByChapter", "max");
-    revalidateTag(parsedInput.chapterId, "max");
+    updateTag("materialsByChapter");
+    updateTag(parsedInput.chapterId);
   } catch (error) {
     return handleServerActionError(error);
   }

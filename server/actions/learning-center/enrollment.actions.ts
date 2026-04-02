@@ -89,9 +89,7 @@ export async function enrollUser(
     await EnrollmentService.enrollUser(parsedInput);
 
     revalidateTag("enrollmentsByCourse", "max");
-    revalidateTag(parsedInput.courseId, "max");
     revalidateTag("enrollmentsByUser", "max");
-    revalidateTag(parsedInput.userId, "max");
     revalidateTag("enrollment", "max");
   } catch (error) {
     return handleServerActionError(error);
@@ -108,9 +106,7 @@ export async function markEnrollmentAsCompleted(
     await EnrollmentService.markAsCompleted(parsedInput);
 
     revalidateTag("enrollmentsByCourse", "max");
-    revalidateTag(parsedInput.courseId, "max");
     revalidateTag("enrollmentsByUser", "max");
-    revalidateTag(parsedInput.userId, "max");
     revalidateTag("enrollment", "max");
   } catch (error) {
     return handleServerActionError(error);
@@ -127,9 +123,7 @@ export async function dropEnrollmentCourse(
     await EnrollmentService.dropCourse(parsedInput);
 
     revalidateTag("enrollmentsByCourse", "max");
-    revalidateTag(parsedInput.courseId, "max");
     revalidateTag("enrollmentsByUser", "max");
-    revalidateTag(parsedInput.userId, "max");
     revalidateTag("enrollment", "max");
   } catch (error) {
     return handleServerActionError(error);
@@ -146,7 +140,6 @@ export async function updateEnrollmentStatus(
     await EnrollmentService.updateEnrollmentStatus(parsedInput);
 
     revalidateTag("enrollmentById", "max");
-    revalidateTag(parsedInput.enrollmentId, "max");
     revalidateTag("enrollmentsByCourse", "max");
     revalidateTag("enrollmentsByUser", "max");
     revalidateTag("enrollment", "max");
@@ -165,7 +158,6 @@ export async function deleteEnrollment(
     await EnrollmentService.deleteEnrollment(parsedInput);
 
     revalidateTag("enrollmentById", "max");
-    revalidateTag(parsedInput.enrollmentId, "max");
     revalidateTag("enrollmentsByCourse", "max");
     revalidateTag("enrollmentsByUser", "max");
     revalidateTag("enrollment", "max");

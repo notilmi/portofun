@@ -28,11 +28,10 @@ function SidebarMenu({ href, label }: DashboardRoute) {
 
 export default function Sidebar() {
   const { data: session, isPending } = authClient.useSession();
-  console.log("User session in Sidebar:", session);
 
   return (
     <div className="flex flex-col gap-1">
-           {isPending
+      {isPending
         ? Array.from({ length: 5 }).map((_, idx) => (
             <Skeleton key={idx} className="h-12 w-full rounded-md" />
           ))

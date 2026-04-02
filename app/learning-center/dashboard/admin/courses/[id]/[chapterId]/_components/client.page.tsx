@@ -1,8 +1,8 @@
 "use client";
 
-import { ArrowLeftIcon, PencilIcon } from "lucide-react";
+import { ArrowLeftIcon, PencilIcon, Trash2Icon } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -12,6 +12,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import DeleteMaterialDialog from "./delete-material-dialog";
+import EditChapterDialog from "./edit-chapter-dialog";
 
 type ChapterDetail = {
   id: string;
@@ -40,7 +42,32 @@ export default function ClientPage({
   initialChapter,
   initialMaterials,
 }: ClientPageProps) {
-  const [materials] = useState<MaterialItem[]>(initialMaterials);
+  const [chapter, setChapter] = useState<ChapterDetail>(initialChapter);
+  const [materials, setMaterials] = useState<MaterialItem[]>(initialMaterials);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [editChapterDialogOpen, setEditChapterDialogOpen] = useState(false);
+  const [materialToDelete, setMaterialToDelete] = useState<MaterialItem | null>(
+    null,
+  );
+
+  // When server props change (e.g. after router.refresh()), sync local state
+  useEffect(() => {
+    setChapter(initialChapter);
+  }, [initialChapter]);
+
+  useEffect(() => {
+    setMaterials(initialMaterials);
+  }, [initialMaterials]);
+
+  const handleDeleteClick = (material: MaterialItem) => {
+    setMaterialToDelete(material);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteSuccess = (deletedId: string) => {
+    // Optimistically remove from UI
+    setMaterials((prev) => prev.filter((m) => m.id !== deletedId));
+  };
 
   return (
     <div className="space-y-6">
@@ -57,12 +84,12 @@ export default function ClientPage({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">{initialChapter.title}</h1>
+          <h1 className="text-2xl font-bold">{chapter.title}</h1>
           <p className="text-sm text-muted-foreground">
-            Chapter {initialChapter.sequenceOrder} - Manage Materials
+            Chapter {chapter.sequenceOrder} - Manage Materials
           </p>
         </div>
-        <Button variant="outline" size="sm">
+        <Button variant="outline" size="sm" onClick={() => setEditChapterDialogOpen(true)}>
           <PencilIcon />
           Edit Chapter
         </Button>
@@ -77,12 +104,12 @@ export default function ClientPage({
         <CardContent className="space-y-2">
           <div>
             <p className="text-sm font-medium">Title</p>
-            <p className="text-sm text-muted-foreground">{initialChapter.title}</p>
+            <p className="text-sm text-muted-foreground">{chapter.title}</p>
           </div>
           <div>
             <p className="text-sm font-medium">Sequence Order</p>
             <p className="text-sm text-muted-foreground">
-              Chapter {initialChapter.sequenceOrder}
+              Chapter {chapter.sequenceOrder}
             </p>
           </div>
           <div>
@@ -104,7 +131,13 @@ export default function ClientPage({
               Manage learning materials for this chapter.
             </CardDescription>
           </div>
-          <Button>Add Material</Button>
+          <Button asChild>
+            <Link
+              href={`/learning-center/dashboard/admin/courses/${courseId}/${chapter.id}/material/new`}
+            >
+              Add Material
+            </Link>
+          </Button>
         </CardHeader>
         <CardContent>
           {materials.length === 0 ? (
@@ -125,11 +158,20 @@ export default function ClientPage({
                     <p className="font-medium">{material.title}</p>
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm" variant="outline">
-                      <PencilIcon />
-                      Edit
+                    <Button size="sm" variant="outline" asChild>
+                      <Link
+                        href={`/learning-center/dashboard/admin/courses/${courseId}/${chapter.id}/material/${material.id}/edit`}
+                      >
+                        <PencilIcon />
+                        Edit
+                      </Link>
                     </Button>
-                    <Button size="sm" variant="destructive">
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      onClick={() => handleDeleteClick(material)}
+                    >
+                      <Trash2Icon />
                       Delete
                     </Button>
                   </div>
@@ -139,6 +181,31 @@ export default function ClientPage({
           )}
         </CardContent>
       </Card>
+
+      {/* Delete Confirmation Dialog */}
+      {materialToDelete && (
+        <DeleteMaterialDialog
+          material={{
+            id: materialToDelete.id,
+            title: materialToDelete.title,
+          }}
+          courseId={courseId}
+          chapterId={chapter.id}
+          open={deleteDialogOpen}
+          onOpenChange={setDeleteDialogOpen}
+          onDeleteSuccess={handleDeleteSuccess}
+        />
+      )}
+
+      {/* Edit Chapter Dialog */}
+      <EditChapterDialog
+        chapter={{
+          id: chapter.id,
+          title: chapter.title,
+        }}
+        open={editChapterDialogOpen}
+        onOpenChange={setEditChapterDialogOpen}
+      />
     </div>
   );
 }
