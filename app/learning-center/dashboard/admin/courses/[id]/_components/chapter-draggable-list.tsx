@@ -5,6 +5,7 @@ import ChapterRow from "./chapter-row";
 
 type ChapterDraggableListProps = {
   chapters: ChapterItem[];
+  courseId: string;
   busyChapterId?: string;
   dragOverChapterId?: string;
   isReordering: boolean;
@@ -18,6 +19,7 @@ type ChapterDraggableListProps = {
 
 export default function ChapterDraggableList({
   chapters,
+  courseId,
   busyChapterId,
   dragOverChapterId,
   isReordering,
@@ -34,6 +36,7 @@ export default function ChapterDraggableList({
         <ChapterRow
           key={chapter.id}
           chapter={chapter}
+          courseId={courseId}
           isBusy={busyChapterId === chapter.id}
           isReordering={isReordering}
           isDropTarget={dragOverChapterId === chapter.id}

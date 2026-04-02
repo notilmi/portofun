@@ -65,6 +65,7 @@ export default function ClientPage({
 
       <ChaptersSection
         chapters={orderedChapters}
+        courseId={course.id}
         busyChapterId={busyChapterId}
         isCreateChapterDialogOpen={isCreateChapterDialogOpen}
         onCreateChapterDialogOpenChange={setIsCreateChapterDialogOpen}

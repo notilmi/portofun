@@ -26,6 +26,7 @@ import ChapterDraggableList from "./chapter-draggable-list";
 
 type ChaptersSectionProps = {
   chapters: ChapterItem[];
+  courseId: string;
   busyChapterId?: string;
   isCreateChapterDialogOpen: boolean;
   onCreateChapterDialogOpenChange: (open: boolean) => void;
@@ -44,6 +45,7 @@ type ChaptersSectionProps = {
 
 export default function ChaptersSection({
   chapters,
+  courseId,
   busyChapterId,
   isCreateChapterDialogOpen,
   onCreateChapterDialogOpenChange,
@@ -90,6 +92,7 @@ export default function ChaptersSection({
         ) : (
           <ChapterDraggableList
             chapters={chapters}
+            courseId={courseId}
             busyChapterId={busyChapterId}
             dragOverChapterId={dnd.dragOverChapterId}
             isReordering={dnd.isReordering}
