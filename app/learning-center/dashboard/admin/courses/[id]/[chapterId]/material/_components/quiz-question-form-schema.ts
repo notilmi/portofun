@@ -1,23 +1,23 @@
 import { z } from "zod";
 
 export const quizOptionSchema = z.object({
-  text: z.string().trim().min(1, "Option text is required"),
+  text: z.string().trim().min(1, "Teks opsi wajib diisi"),
 });
 
 export const quizQuestionFormSchema = z
   .object({
-    question: z.string().trim().min(1, "Question is required"),
+    question: z.string().trim().min(1, "Pertanyaan wajib diisi"),
     options: z
       .array(quizOptionSchema)
-      .min(2, "At least 2 options are required")
-      .max(10, "Maximum 10 options"),
+      .min(2, "Minimal 2 opsi wajib ada")
+      .max(10, "Maksimal 10 opsi"),
     correctIndex: z
       .number()
       .int()
-      .min(0, "Please select the correct answer"),
+      .min(0, "Silakan pilih jawaban yang benar"),
   })
   .refine((v) => v.correctIndex < v.options.length, {
-    message: "Correct answer must be one of the options",
+    message: "Jawaban benar harus salah satu dari opsi",
     path: ["correctIndex"],
   });
 

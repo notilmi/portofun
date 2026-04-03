@@ -62,7 +62,7 @@ export default function CourseCard({
                   : "border-emerald-500/30 bg-emerald-500/10 text-emerald-700",
               ].join(" ")}
             >
-              {course.isArchived ? "Archived" : "Active"}
+              {course.isArchived ? "Diarsipkan" : "Aktif"}
             </span>
           </div>
 
@@ -94,7 +94,7 @@ export default function CourseCard({
               }}
             >
               <ArchiveRestoreIcon />
-              Unarchive
+              Pulihkan
             </Button>
           ) : (
             <Button
@@ -107,7 +107,7 @@ export default function CourseCard({
               }}
             >
               <ArchiveIcon />
-              Archive
+              Arsipkan
             </Button>
           )}
 

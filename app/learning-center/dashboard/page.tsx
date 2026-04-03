@@ -13,18 +13,18 @@ async function DashboardInner() {
     <div className="space-y-6">
       <div className="flex flex-col items-start justify-between gap-2 md:flex-row md:items-end">
         <div className="space-y-1">
-          <h1 className="text-2xl font-bold">Dashboard</h1>
+          <h1 className="text-2xl font-bold">Dasbor</h1>
           <p className="text-sm text-muted-foreground">
-            Your learning overview and quick access.
+            Ikhtisar belajar dan akses cepat Anda.
           </p>
         </div>
 
         <div className="flex gap-3 text-sm">
           <Link className="underline" href="/learning-center/dashboard/catalog">
-            Catalog
+            Katalog
           </Link>
           <Link className="underline" href="/learning-center/dashboard/my-learnings">
-            My Learnings
+            Pembelajaran Saya
           </Link>
         </div>
       </div>
@@ -35,48 +35,48 @@ async function DashboardInner() {
         <Card className="rounded-xl">
           <CardHeader className="space-y-1">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Active
+              Aktif
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{insights.activeCount}</div>
-            <p className="mt-1 text-sm text-muted-foreground">Enrollments</p>
+            <p className="mt-1 text-sm text-muted-foreground">Pendaftaran</p>
           </CardContent>
         </Card>
 
         <Card className="rounded-xl">
           <CardHeader className="space-y-1">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Completed
+              Selesai
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{insights.completedCount}</div>
-            <p className="mt-1 text-sm text-muted-foreground">Enrollments</p>
+            <p className="mt-1 text-sm text-muted-foreground">Pendaftaran</p>
           </CardContent>
         </Card>
 
         <Card className="rounded-xl">
           <CardHeader className="space-y-1">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Dropped
+              Dihentikan
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{insights.droppedCount}</div>
-            <p className="mt-1 text-sm text-muted-foreground">Enrollments</p>
+            <p className="mt-1 text-sm text-muted-foreground">Pendaftaran</p>
           </CardContent>
         </Card>
 
         <Card className="rounded-xl">
           <CardHeader className="space-y-1">
             <CardTitle className="text-sm font-medium text-muted-foreground">
-              Materials completed
+              Materi selesai
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold">{insights.completedMaterialsCount}</div>
-            <p className="mt-1 text-sm text-muted-foreground">All courses</p>
+            <p className="mt-1 text-sm text-muted-foreground">Semua kursus</p>
           </CardContent>
         </Card>
       </div>
@@ -84,13 +84,13 @@ async function DashboardInner() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Card className="rounded-xl">
           <CardHeader>
-            <CardTitle className="text-base">Browse Catalog</CardTitle>
+            <CardTitle className="text-base">Jelajahi Katalog</CardTitle>
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground">
-            Find courses you’re interested in and enroll.
+            Temukan kursus yang Anda minati dan daftarkan diri.
             <div className="mt-3">
               <Link className="underline" href="/learning-center/dashboard/catalog">
-                Open catalog
+                Buka katalog
               </Link>
             </div>
           </CardContent>
@@ -98,13 +98,13 @@ async function DashboardInner() {
 
         <Card className="rounded-xl">
           <CardHeader>
-            <CardTitle className="text-base">Continue learning</CardTitle>
+            <CardTitle className="text-base">Lanjutkan belajar</CardTitle>
           </CardHeader>
           <CardContent className="text-sm text-muted-foreground">
-            Jump back into your active courses.
+            Kembali ke kursus aktif Anda.
             <div className="mt-3">
               <Link className="underline" href="/learning-center/dashboard/my-learnings">
-                Open my learnings
+                Buka pembelajaran saya
               </Link>
             </div>
           </CardContent>

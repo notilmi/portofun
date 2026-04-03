@@ -6,9 +6,9 @@ import { z } from "zod";
 export const materialTypeSchema = z.enum(["markdown", "video", "quiz"]);
 
 export const quizQuestionInputSchema = z.object({
-  question: z.string().trim().min(1, "Question is required"),
-  answer: z.string().trim().min(1, "Answer is required"),
-  correctAnswer: z.string().trim().min(1, "Correct answer is required"),
+  question: z.string().trim().min(1, "Pertanyaan wajib diisi"),
+  answer: z.string().trim().min(1, "Jawaban wajib diisi"),
+  correctAnswer: z.string().trim().min(1, "Jawaban benar wajib diisi"),
 });
 
 export type QuizQuestionInput = z.infer<typeof quizQuestionInputSchema>;
@@ -37,11 +37,11 @@ function parseAnswerKeys(answer: string): string[] | null {
  */
 export const materialFormSchema = z
   .object({
-    title: z
+      title: z
       .string()
       .trim()
-      .min(1, "Material title is required")
-      .max(120, "Title is too long"),
+      .min(1, "Judul materi wajib diisi")
+      .max(120, "Judul terlalu panjang"),
     type: materialTypeSchema,
     content: z.string().optional(),
     videoUrl: z.string().trim().optional(),
@@ -55,7 +55,7 @@ export const materialFormSchema = z
       return true;
     },
     {
-      message: "Content is required for markdown materials",
+      message: "Konten wajib diisi untuk materi markdown",
       path: ["content"],
     },
   )
@@ -75,7 +75,7 @@ export const materialFormSchema = z
       return true;
     },
     {
-      message: "Valid video URL is required for video materials",
+      message: "URL video yang valid wajib diisi untuk materi video",
       path: ["videoUrl"],
     },
   )
@@ -85,7 +85,7 @@ export const materialFormSchema = z
       return Array.isArray(data.quizQuestions) && data.quizQuestions.length > 0;
     },
     {
-      message: "At least 1 quiz question is required",
+      message: "Minimal 1 pertanyaan kuis wajib ada",
       path: ["quizQuestions"],
     },
   )
@@ -102,7 +102,7 @@ export const materialFormSchema = z
     },
     {
       message:
-        "Each quiz question must have 2+ options and the correct answer must match one of the option keys",
+        "Setiap pertanyaan kuis harus memiliki minimal 2 opsi dan jawaban benar harus cocok dengan salah satu kunci opsi",
       path: ["quizQuestions"],
     },
   );

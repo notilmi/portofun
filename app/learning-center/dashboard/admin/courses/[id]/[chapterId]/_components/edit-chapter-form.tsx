@@ -62,13 +62,13 @@ export default function EditChapterForm({
       // Validate with Zod schema
       const parsed = editChapterFormSchema.safeParse(value);
       if (!parsed.success) {
-        setFeedback(parsed.error.issues[0]?.message ?? "Validation failed");
+        setFeedback(parsed.error.issues[0]?.message ?? "Validasi gagal");
         return;
       }
 
       const isSuccess = await onSubmit(parsed.data);
       if (!isSuccess) {
-        setFeedback("Failed to update chapter. Please try again.");
+        setFeedback("Gagal memperbarui bab. Silakan coba lagi.");
       }
     },
   });
@@ -99,11 +99,11 @@ export default function EditChapterForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Chapter Title</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Judul Bab</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
-                  placeholder="Introduction to TypeScript"
+                  placeholder="Pengantar TypeScript"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(event) => field.handleChange(event.target.value)}
@@ -128,22 +128,22 @@ export default function EditChapterForm({
         <form.Subscribe selector={(state) => [state.canSubmit, state.isSubmitting]}>
           {([canSubmit, isSubmitting]) => (
             <div className="flex items-center justify-end gap-2">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={onCancel}
-                disabled={isSubmitting}
-              >
-                Cancel
-              </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={onCancel}
+                  disabled={isSubmitting}
+                >
+                Batal
+                </Button>
               <Button type="submit" disabled={!canSubmit || isSubmitting}>
                 {isSubmitting ? (
                   <>
                     <Loader2Icon className="animate-spin" />
-                    Saving...
+                    Menyimpan...
                   </>
                 ) : (
-                  "Save Changes"
+                  "Simpan Perubahan"
                 )}
               </Button>
             </div>

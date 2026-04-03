@@ -8,8 +8,8 @@ export const editChapterFormSchema = z.object({
   title: z
     .string()
     .trim()
-    .min(1, "Chapter title is required")
-    .max(120, "Title is too long"),
+    .min(1, "Judul bab wajib diisi")
+    .max(120, "Judul terlalu panjang"),
 });
 
 export type EditChapterFormValues = z.infer<typeof editChapterFormSchema>;

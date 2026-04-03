@@ -1,10 +1,10 @@
 export type MaterialTypeKey = "markdown" | "youtube" | "video" | "quiz";
 
 const MATERIAL_TYPE_LABEL: Record<MaterialTypeKey, string> = {
-  markdown: "Document",
+  markdown: "Dokumen",
   youtube: "Video",
   video: "Video",
-  quiz: "Quiz",
+  quiz: "Kuis",
 };
 
 export function materialTypeLabel(type: string): string {

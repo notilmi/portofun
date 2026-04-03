@@ -5,7 +5,7 @@ export type DashboardRoute = {
 
 export const DASHBOARD_ROUTES: DashboardRoute[] = [
   {
-    label: "Dashboard",
+    label: "Dasbor",
     href: "/learning-center/dashboard",
   },
   {

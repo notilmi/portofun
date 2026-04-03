@@ -24,7 +24,12 @@ function getBadge(status: string | null | undefined) {
   if (!status) return undefined;
 
   return {
-    label: status,
+      label:
+        status === "COMPLETED"
+          ? "Selesai"
+          : status === "DROPPED"
+            ? "Dihentikan"
+            : "Aktif",
     tone:
       status === "COMPLETED"
         ? ("success" as const)
@@ -62,9 +67,9 @@ export default function CatalogCourseGrid({
     <div className="space-y-4">
       <div className="flex flex-col items-start justify-between gap-3 md:flex-row md:items-start">
         <div className="space-y-1">
-          <h1 className="text-2xl font-bold">Catalog</h1>
+          <h1 className="text-2xl font-bold">Katalog</h1>
           <p className="text-sm text-muted-foreground">
-            Browse courses and enroll to start learning.
+            Jelajahi kursus dan daftar untuk mulai belajar.
           </p>
         </div>
 
@@ -72,7 +77,7 @@ export default function CatalogCourseGrid({
           <Input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search courses..."
+            placeholder="Cari kursus..."
             aria-label="Search courses"
             className="w-full md:w-72"
           />
@@ -80,7 +85,7 @@ export default function CatalogCourseGrid({
             href="/learning-center/dashboard/my-learnings"
             className="text-sm underline"
           >
-            My Learnings
+            Pembelajaran Saya
           </Link>
         </div>
       </div>
@@ -88,9 +93,11 @@ export default function CatalogCourseGrid({
       <Separator />
 
       {courses.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No courses available.</p>
+        <p className="text-sm text-muted-foreground">Belum ada kursus.</p>
       ) : filteredCourses.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No courses match your search.</p>
+        <p className="text-sm text-muted-foreground">
+          Tidak ada kursus yang sesuai dengan pencarian Anda.
+        </p>
       ) : (
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {filteredCourses.map((course) => {
@@ -114,19 +121,19 @@ export default function CatalogCourseGrid({
                     {status === "ACTIVE" ? (
                       <Button asChild variant="outline" size="sm">
                         <Link href={`/learning-center/dashboard/courses/${course.id}`}>
-                          Continue
+                          Lanjutkan
                         </Link>
                       </Button>
                     ) : status === "COMPLETED" ? (
                       <Button asChild variant="outline" size="sm">
                         <Link href={`/learning-center/dashboard/courses/${course.id}`}>
-                          Review
+                          Tinjau
                         </Link>
                       </Button>
                     ) : (
                       <CourseEnrollButton
                         courseId={course.id}
-                        label={status === "DROPPED" ? "Re-enroll" : "Enroll"}
+                        label={status === "DROPPED" ? "Daftar ulang" : "Daftar"}
                         variant="default"
                       />
                     )}

@@ -26,8 +26,8 @@ function questionSummary(q: QuizQuestionInput): string {
   const options = parseQuizAnswer(q.answer);
   const correct = q.correctAnswer;
   const correctText = options.find((o) => o.key === correct)?.text;
-  if (correctText) return `Correct: ${correct}. ${correctText}`;
-  if (correct) return `Correct: ${correct}`;
+    if (correctText) return `Benar: ${correct}. ${correctText}`;
+    if (correct) return `Benar: ${correct}`;
   return "";
 }
 
@@ -85,14 +85,14 @@ export default function QuizQuestionsEditor({ value, onChange, error }: QuizQues
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium">Quiz Questions</p>
+          <p className="text-sm font-medium">Pertanyaan Kuis</p>
           <p className="text-xs text-muted-foreground">
-            Add at least 1 question. Each question must have 2–10 options.
+            Tambahkan minimal 1 pertanyaan. Setiap pertanyaan harus memiliki 2–10 opsi.
           </p>
         </div>
         <Button type="button" variant="outline" size="sm" onClick={startAdd}>
           <PlusIcon />
-          Add Question
+          Tambah Pertanyaan
         </Button>
       </div>
 
@@ -104,7 +104,7 @@ export default function QuizQuestionsEditor({ value, onChange, error }: QuizQues
 
       {value.length === 0 ? (
         <div className="rounded-lg border bg-muted/20 px-3 py-3 text-sm text-muted-foreground">
-          No questions yet.
+          Belum ada pertanyaan.
         </div>
       ) : (
         <div className="rounded-lg border">
@@ -125,7 +125,7 @@ export default function QuizQuestionsEditor({ value, onChange, error }: QuizQues
                     variant="ghost"
                     size="icon-sm"
                     onClick={() => startEdit(idx)}
-                    aria-label={`Edit question ${idx + 1}`}
+                     aria-label={`Ubah pertanyaan ${idx + 1}`}
                   >
                     <PencilIcon />
                   </Button>
@@ -134,7 +134,7 @@ export default function QuizQuestionsEditor({ value, onChange, error }: QuizQues
                     variant="ghost"
                     size="icon-sm"
                     onClick={() => handleDelete(idx)}
-                    aria-label={`Delete question ${idx + 1}`}
+                     aria-label={`Hapus pertanyaan ${idx + 1}`}
                   >
                     <TrashIcon />
                   </Button>
@@ -150,10 +150,10 @@ export default function QuizQuestionsEditor({ value, onChange, error }: QuizQues
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle>
-              {editingIndex == null ? "Add Question" : "Edit Question"}
+               {editingIndex == null ? "Tambah Pertanyaan" : "Ubah Pertanyaan"}
             </DialogTitle>
             <DialogDescription>
-              Define the question, options, and which option is correct.
+              Tentukan pertanyaan, opsi, dan opsi mana yang benar.
             </DialogDescription>
           </DialogHeader>
 

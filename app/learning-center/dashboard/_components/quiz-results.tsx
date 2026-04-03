@@ -36,10 +36,10 @@ export default function QuizResults({ questions, attempt, className }: QuizResul
   return (
     <div className={cn("space-y-4", className)}>
       <div className="rounded-lg border bg-muted/20 px-3 py-2">
-        <p className="text-sm font-medium">Results</p>
-        <p className="text-sm text-muted-foreground">
-          Score: <span className="font-medium text-foreground">{correct}</span> / {total}
-        </p>
+         <p className="text-sm font-medium">Hasil</p>
+         <p className="text-sm text-muted-foreground">
+           Nilai: <span className="font-medium text-foreground">{correct}</span> / {total}
+         </p>
       </div>
 
       <div className="space-y-3">
@@ -57,10 +57,10 @@ export default function QuizResults({ questions, attempt, className }: QuizResul
                     Q{idx + 1}. {q.question}
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    Your answer: {selected ? `${selected}. ${selectedText ?? ""}` : "(none)"}
+                     Jawaban Anda: {selected ? `${selected}. ${selectedText ?? ""}` : "(kosong)"}
                   </p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    Correct: {q.correctAnswer}. {correctText ?? ""}
+                    Jawaban benar: {q.correctAnswer}. {correctText ?? ""}
                   </p>
                 </div>
                 <div
@@ -73,11 +73,11 @@ export default function QuizResults({ questions, attempt, className }: QuizResul
                 >
                   {isCorrect ? (
                     <span className="inline-flex items-center gap-1">
-                      <CheckIcon className="size-3" /> Correct
+                      <CheckIcon className="size-3" /> Benar
                     </span>
                   ) : (
                     <span className="inline-flex items-center gap-1">
-                      <XIcon className="size-3" /> Incorrect
+                      <XIcon className="size-3" /> Salah
                     </span>
                   )}
                 </div>

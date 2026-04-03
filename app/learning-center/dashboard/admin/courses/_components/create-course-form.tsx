@@ -17,12 +17,12 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 export const createCourseFormSchema = z.object({
-  title: z.string().trim().min(1, "Title is required").max(120, "Title is too long"),
+  title: z.string().trim().min(1, "Judul wajib diisi").max(120, "Judul terlalu panjang"),
   description: z
     .string()
     .trim()
-    .min(1, "Description is required")
-    .max(500, "Description is too long"),
+    .min(1, "Deskripsi wajib diisi")
+    .max(500, "Deskripsi terlalu panjang"),
 });
 
 export type CreateCourseFormValues = z.infer<typeof createCourseFormSchema>;
@@ -99,17 +99,17 @@ export default function CreateCourseForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Title</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Judul</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
-                  placeholder="Introduction to TypeScript"
+                  placeholder="Pengantar TypeScript"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(event) => field.handleChange(event.target.value)}
                 />
                 <FieldDescription>
-                  Keep this short and clear so students can quickly understand it.
+                  Buat ini singkat dan jelas agar siswa cepat memahaminya.
                 </FieldDescription>
                 <FieldError>
                   {firstErrorMessage(field.state.meta.errors as unknown[])}
@@ -135,11 +135,11 @@ export default function CreateCourseForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Description</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Deskripsi</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
-                  placeholder="A practical course focused on hands-on projects"
+                  placeholder="Kursus praktis yang berfokus pada proyek langsung"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(event) => field.handleChange(event.target.value)}
@@ -158,12 +158,12 @@ export default function CreateCourseForm({
               {isSubmitting ? (
                 <>
                   <Loader2Icon className="animate-spin" />
-                  Creating...
+                  Membuat...
                 </>
               ) : (
                 <>
                   <PlusIcon />
-                  Create Course
+                  Buat Kursus
                 </>
               )}
             </Button>

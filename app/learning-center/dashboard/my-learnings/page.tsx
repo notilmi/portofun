@@ -25,16 +25,16 @@ async function MyLearningsInner() {
     <div className="space-y-4">
       <div className="flex items-start justify-between gap-4">
         <div className="space-y-1">
-          <h1 className="text-2xl font-bold">My Learnings</h1>
+          <h1 className="text-2xl font-bold">Pembelajaran Saya</h1>
           <p className="text-sm text-muted-foreground">
-            Your enrolled courses.
+            Kursus yang Anda ikuti.
           </p>
         </div>
         <Link
           href="/learning-center/dashboard/catalog"
           className="text-sm underline"
         >
-          Catalog
+          Katalog
         </Link>
       </div>
 
@@ -42,13 +42,13 @@ async function MyLearningsInner() {
 
       {enrollments.length === 0 ? (
         <p className="text-sm text-muted-foreground">
-          You have not enrolled in any courses yet.
+          Anda belum mendaftar ke kursus apa pun.
         </p>
       ) : (
         <div className="space-y-6">
           {active.length > 0 ? (
             <section className="space-y-3">
-              <h2 className="text-lg font-semibold">Active</h2>
+              <h2 className="text-lg font-semibold">Aktif</h2>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {active.map((e) => (
                   <LearningCenterCourseCard
@@ -56,13 +56,13 @@ async function MyLearningsInner() {
                     title={e.course.title}
                     description={e.course.description}
                     href={`/learning-center/dashboard/courses/${e.courseId}`}
-                    badge={{ label: "ACTIVE", tone: "neutral" }}
+                    badge={{ label: "Aktif", tone: "neutral" }}
                     footer={
                       <Button asChild size="sm" variant="outline">
                         <Link
                           href={`/learning-center/dashboard/courses/${e.courseId}`}
                         >
-                          Continue
+                          Lanjutkan
                         </Link>
                       </Button>
                     }
@@ -74,7 +74,7 @@ async function MyLearningsInner() {
 
           {completed.length > 0 ? (
             <section className="space-y-3">
-              <h2 className="text-lg font-semibold">Completed</h2>
+              <h2 className="text-lg font-semibold">Selesai</h2>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {completed.map((e) => (
                   <LearningCenterCourseCard
@@ -82,13 +82,13 @@ async function MyLearningsInner() {
                     title={e.course.title}
                     description={e.course.description}
                     href={`/learning-center/dashboard/courses/${e.courseId}`}
-                    badge={{ label: "COMPLETED", tone: "success" }}
+                    badge={{ label: "Selesai", tone: "success" }}
                     footer={
                       <Button asChild size="sm" variant="outline">
                         <Link
                           href={`/learning-center/dashboard/courses/${e.courseId}`}
                         >
-                          Review
+                          Tinjau
                         </Link>
                       </Button>
                     }
@@ -100,18 +100,18 @@ async function MyLearningsInner() {
 
           {dropped.length > 0 ? (
             <section className="space-y-3">
-              <h2 className="text-lg font-semibold">Dropped</h2>
+              <h2 className="text-lg font-semibold">Dihentikan</h2>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {dropped.map((e) => (
                   <LearningCenterCourseCard
                     key={e.id}
                     title={e.course.title}
                     description={e.course.description}
-                    badge={{ label: "DROPPED", tone: "warning" }}
+                    badge={{ label: "Dihentikan", tone: "warning" }}
                     footer={
                       <Button asChild size="sm" variant="outline">
                         <Link href="/learning-center/dashboard/catalog">
-                          Re-enroll
+                          Daftar ulang
                         </Link>
                       </Button>
                     }

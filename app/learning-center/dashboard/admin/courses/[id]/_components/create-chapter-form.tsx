@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 export const createChapterFormSchema = z.object({
-  title: z.string().trim().min(1, "Chapter title is required").max(120, "Title is too long"),
+  title: z.string().trim().min(1, "Judul bab wajib diisi").max(120, "Judul terlalu panjang"),
   sequenceOrder: z
     .string()
     .trim()
@@ -35,7 +35,7 @@ export const createChapterFormSchema = z.object({
       return parsed;
     })
     .refine((value) => value === undefined || Number.isFinite(value), {
-      message: "Order must be a positive number",
+      message: "Urutan harus berupa angka positif",
     }),
 });
 
@@ -113,11 +113,11 @@ export default function CreateChapterForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Chapter Title</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Judul Bab</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
-                  placeholder="Getting Started"
+                  placeholder="Memulai"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(event) => field.handleChange(event.target.value)}
@@ -146,18 +146,18 @@ export default function CreateChapterForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Position (optional)</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Posisi (opsional)</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
                   inputMode="numeric"
-                  placeholder="e.g. 1"
+                  placeholder="mis. 1"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(event) => field.handleChange(event.target.value)}
                 />
                 <FieldDescription>
-                  Leave empty to append chapter at the end.
+                  Kosongkan untuk menambahkan bab di akhir.
                 </FieldDescription>
                 <FieldError>
                   {firstErrorMessage(field.state.meta.errors as unknown[])}
@@ -173,12 +173,12 @@ export default function CreateChapterForm({
               {isSubmitting ? (
                 <>
                   <Loader2Icon className="animate-spin" />
-                  Creating...
+                  Membuat...
                 </>
               ) : (
                 <>
                   <PlusIcon />
-                  Create Chapter
+                  Buat Bab
                 </>
               )}
             </Button>

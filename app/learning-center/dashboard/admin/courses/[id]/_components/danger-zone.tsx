@@ -39,9 +39,9 @@ export default function DangerZone({
   return (
     <Card className="border-destructive/30">
       <CardHeader>
-        <CardTitle className="text-destructive">Danger Zone</CardTitle>
+        <CardTitle className="text-destructive">Area Berbahaya</CardTitle>
         <CardDescription>
-          This action permanently removes this course and all associated chapters.
+          Tindakan ini akan menghapus kursus ini dan semua bab terkait secara permanen.
         </CardDescription>
       </CardHeader>
       <CardContent className="flex flex-wrap items-center gap-2">
@@ -52,14 +52,14 @@ export default function DangerZone({
           <DialogTrigger asChild>
             <Button variant="destructive">
               <Trash2Icon />
-              Delete Course
+              Hapus Kursus
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Delete Course</DialogTitle>
+              <DialogTitle>Hapus Kursus</DialogTitle>
               <DialogDescription>
-                Type DELETE to confirm permanent deletion of this course.
+                Ketik DELETE untuk mengonfirmasi penghapusan permanen kursus ini.
               </DialogDescription>
             </DialogHeader>
 
@@ -67,7 +67,7 @@ export default function DangerZone({
               <Input
                 value={deleteConfirmInput}
                 onChange={(event) => onDeleteConfirmInputChange(event.target.value)}
-                placeholder="Type DELETE"
+                placeholder="Ketik DELETE"
               />
               <div className="flex justify-end gap-2">
                 <Button
@@ -77,14 +77,14 @@ export default function DangerZone({
                     onDeleteConfirmInputChange("");
                   }}
                 >
-                  Cancel
+                  Batal
                 </Button>
                 <Button
                   variant="destructive"
                   disabled={deleteConfirmInput !== "DELETE"}
                   onClick={() => void onDeleteCourse()}
                 >
-                  Confirm Delete
+                  Konfirmasi Hapus
                 </Button>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function DangerZone({
         </Dialog>
 
         <Button variant="ghost" asChild>
-          <Link href="/learning-center/dashboard/admin/courses">Back to Courses</Link>
+          <Link href="/learning-center/dashboard/admin/courses">Kembali ke Kursus</Link>
         </Button>
       </CardContent>
     </Card>

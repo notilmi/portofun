@@ -18,12 +18,12 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 export const editCourseFormSchema = z.object({
-  title: z.string().trim().min(1, "Title is required").max(120, "Title is too long"),
+  title: z.string().trim().min(1, "Judul wajib diisi").max(120, "Judul terlalu panjang"),
   description: z
     .string()
     .trim()
-    .min(1, "Description is required")
-    .max(500, "Description is too long"),
+    .min(1, "Deskripsi wajib diisi")
+    .max(500, "Deskripsi terlalu panjang"),
 });
 
 export type EditCourseFormValues = z.infer<typeof editCourseFormSchema>;
@@ -100,7 +100,7 @@ export default function EditCourseForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Course Title</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Judul Kursus</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
@@ -109,7 +109,7 @@ export default function EditCourseForm({
                   onChange={(event) => field.handleChange(event.target.value)}
                 />
                 <FieldDescription>
-                  Keep title concise and outcome-focused.
+                  Pertahankan judul singkat dan fokus pada hasil.
                 </FieldDescription>
                 <FieldError>
                   {firstErrorMessage(field.state.meta.errors as unknown[])}
@@ -135,7 +135,7 @@ export default function EditCourseForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Description</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Deskripsi</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
@@ -157,12 +157,12 @@ export default function EditCourseForm({
               {isSubmitting ? (
                 <>
                   <Loader2Icon className="animate-spin" />
-                  Saving...
+                  Menyimpan...
                 </>
               ) : (
                 <>
                   <SaveIcon />
-                  Save Changes
+                  Simpan Perubahan
                 </>
               )}
             </Button>

@@ -30,7 +30,7 @@ function canRenderResults(questions: QuizViewerProps["questions"]): questions is
 export default function QuizViewer({
   questions,
   className,
-  submitLabel = "Submit",
+    submitLabel = "Kirim",
   onSubmit,
   onRetry,
   disableSubmit = false,
@@ -84,7 +84,7 @@ export default function QuizViewer({
           className,
         )}
       >
-        No questions to preview.
+        Tidak ada pertanyaan untuk pratinjau.
       </div>
     );
   }
@@ -147,13 +147,13 @@ export default function QuizViewer({
             <QuizResults questions={questions} attempt={attempt} />
           ) : (
             <div className="rounded-lg border bg-muted/20 px-3 py-2 text-sm text-muted-foreground">
-              Submitted.
+              Terkirim.
             </div>
           )}
 
           <div className="flex items-center justify-end">
             <Button type="button" variant="outline" onClick={handleRetry}>
-              Retry
+                Coba lagi
             </Button>
           </div>
         </>

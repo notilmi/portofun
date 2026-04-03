@@ -67,7 +67,7 @@ export default function EditChapterDialog({
       router.refresh();
       return true;
     } catch (err) {
-      setError("An unexpected error occurred. Please try again.");
+      setError("Terjadi kesalahan tak terduga. Silakan coba lagi.");
       return false;
     }
   };
@@ -81,9 +81,9 @@ export default function EditChapterDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit Chapter</DialogTitle>
+          <DialogTitle>Ubah Bab</DialogTitle>
           <DialogDescription>
-            Update the chapter title. Changes will be saved immediately.
+            Perbarui judul bab. Perubahan akan disimpan segera.
           </DialogDescription>
         </DialogHeader>
 

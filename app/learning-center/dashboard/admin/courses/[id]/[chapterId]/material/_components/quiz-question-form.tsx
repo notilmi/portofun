@@ -2,7 +2,7 @@
 
 import { useForm } from "@tanstack/react-form";
 import { Loader2Icon } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -61,7 +61,7 @@ export default function QuizQuestionForm({
   initialValues,
   onSubmit,
   onCancel,
-  submitLabel = "Save Question",
+  submitLabel = "Simpan Pertanyaan",
 }: QuizQuestionFormProps) {
   const [feedback, setFeedback] = useState<string | undefined>();
 
@@ -78,7 +78,7 @@ export default function QuizQuestionForm({
 
       const parsed = quizQuestionFormSchema.safeParse(value);
       if (!parsed.success) {
-        setFeedback(parsed.error.issues[0]?.message ?? "Validation failed");
+        setFeedback(parsed.error.issues[0]?.message ?? "Validasi gagal");
         return;
       }
 
@@ -97,10 +97,21 @@ export default function QuizQuestionForm({
       });
 
       if (!ok) {
-        setFeedback("Failed to save question. Please try again.");
+        setFeedback("Gagal menyimpan pertanyaan. Silakan coba lagi.");
       }
     },
   });
+
+  useEffect(() => {
+    form.reset({
+      question: initialValues?.question ?? "",
+      options:
+        initialValues?.options ??
+        ([{ text: "" }, { text: "" }] as QuizQuestionFormValues["options"]),
+      correctIndex: initialValues?.correctIndex ?? 0,
+    });
+    setFeedback(undefined);
+  }, [form, initialValues]);
 
   const optionsCount = useMemo(
     () => form.state.values.options.length,
@@ -130,18 +141,18 @@ export default function QuizQuestionForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Question</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Pertanyaan</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
-                  placeholder="What is TypeScript?"
+                  placeholder="Apa itu TypeScript?"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(e) => field.handleChange(e.target.value)}
                   autoFocus
                 />
                 <FieldDescription>
-                  Keep it short and unambiguous. (Rich text can be added later.)
+                  Jaga agar singkat dan tidak ambigu. (Rich text dapat ditambahkan nanti.)
                 </FieldDescription>
                 <FieldError>
                   {firstErrorMessage(field.state.meta.errors as unknown[])}
@@ -155,7 +166,7 @@ export default function QuizQuestionForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel>Options</FieldLabel>
+                <FieldLabel>Opsi</FieldLabel>
                 <div className="space-y-2">
                   {field.state.value.map((opt, idx) => {
                     const key = optionKeyFromIndex(idx);
@@ -172,7 +183,7 @@ export default function QuizQuestionForm({
                         </label>
                         <Input
                           value={opt.text}
-                          placeholder={`Option ${key}`}
+                          placeholder={`Opsi ${key}`}
                           onChange={(e) => {
                             const next = [...field.state.value];
                             next[idx] = { text: e.target.value };
@@ -218,10 +229,10 @@ export default function QuizQuestionForm({
                       field.handleChange([...field.state.value, { text: "" }]);
                     }}
                   >
-                    Add option
+                    Tambah opsi
                   </Button>
                   <p className="text-xs text-muted-foreground">
-                    Select the radio button to mark the correct answer.
+                    Pilih tombol radio untuk menandai jawaban yang benar.
                   </p>
                 </div>
 
@@ -242,17 +253,22 @@ export default function QuizQuestionForm({
         <form.Subscribe selector={(state) => [state.canSubmit, state.isSubmitting]}>
           {([canSubmit, isSubmitting]) => (
             <div className="flex items-center justify-end gap-2">
-              <Button type="button" variant="outline" onClick={onCancel} disabled={isSubmitting}>
-                Cancel
-              </Button>
-              <Button type="submit" disabled={!canSubmit || isSubmitting}>
-                {isSubmitting ? (
-                  <>
-                    <Loader2Icon className="animate-spin" />
-                    Saving...
-                  </>
-                ) : (
-                  submitLabel
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={onCancel}
+                  disabled={isSubmitting}
+                >
+                  Batal
+                </Button>
+                <Button type="submit" disabled={!canSubmit || isSubmitting}>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2Icon className="animate-spin" />
+                      Menyimpan...
+                    </>
+                  ) : (
+                    submitLabel
                 )}
               </Button>
             </div>

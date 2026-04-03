@@ -86,7 +86,7 @@ export default function MaterialForm({
       // Validate with Zod schema
       const parsed = materialFormSchema.safeParse(value);
       if (!parsed.success) {
-        setFeedback(parsed.error.issues[0]?.message ?? "Validation failed");
+        setFeedback(parsed.error.issues[0]?.message ?? "Validasi gagal");
         return;
       }
 
@@ -96,7 +96,7 @@ export default function MaterialForm({
           form.reset();
         }
       } else {
-        setFeedback("Failed to save material. Please try again.");
+        setFeedback("Gagal menyimpan materi. Silakan coba lagi.");
       }
     },
   });
@@ -128,17 +128,17 @@ export default function MaterialForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Material Title</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Judul Materi</FieldLabel>
                 <Input
                   id={field.name}
                   name={field.name}
-                  placeholder="Introduction to Variables"
+                  placeholder="Pengantar Variabel"
                   value={field.state.value}
                   onBlur={field.handleBlur}
                   onChange={(event) => field.handleChange(event.target.value)}
                 />
                 <FieldDescription>
-                  A clear, descriptive title for this learning material.
+                  Judul yang jelas dan deskriptif untuk materi pembelajaran ini.
                 </FieldDescription>
                 <FieldError>
                   {firstErrorMessage(field.state.meta.errors as unknown[])}
@@ -164,7 +164,7 @@ export default function MaterialForm({
           {(field) => (
             <Field data-invalid={field.state.meta.errors.length > 0 || undefined}>
               <FieldContent>
-                <FieldLabel htmlFor={field.name}>Material Type</FieldLabel>
+                <FieldLabel htmlFor={field.name}>Tipe Materi</FieldLabel>
                 <Select
                   value={field.state.value}
                   onValueChange={(value) =>
@@ -176,16 +176,16 @@ export default function MaterialForm({
                     aria-invalid={field.state.meta.errors.length > 0 || undefined}
                     className="w-full"
                   >
-                    <SelectValue placeholder="Select material type" />
+                    <SelectValue placeholder="Pilih tipe materi" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="markdown">Markdown Content</SelectItem>
+                    <SelectItem value="markdown">Konten Markdown</SelectItem>
                     <SelectItem value="video">Video</SelectItem>
-                    <SelectItem value="quiz">Quiz</SelectItem>
+                    <SelectItem value="quiz">Kuis</SelectItem>
                   </SelectContent>
                 </Select>
                 <FieldDescription>
-                  Choose the type of learning material you want to create.
+                  Pilih tipe materi pembelajaran yang ingin Anda buat.
                 </FieldDescription>
                 <FieldError>
                   {firstErrorMessage(field.state.meta.errors as unknown[])}
@@ -206,7 +206,7 @@ export default function MaterialForm({
                   validators={{
                     onChange: ({ value }) => {
                       if (!value || value.trim().length === 0) {
-                        return "Content is required for markdown materials";
+                        return "Konten wajib diisi untuk materi markdown";
                       }
                       return undefined;
                     },
@@ -217,7 +217,7 @@ export default function MaterialForm({
                       data-invalid={field.state.meta.errors.length > 0 || undefined}
                     >
                       <FieldContent>
-                        <FieldLabel htmlFor={field.name}>Content</FieldLabel>
+                        <FieldLabel htmlFor={field.name}>Konten</FieldLabel>
                         <RichTextEditor
                           value={field.state.value ?? undefined}
                           onUpdate={(value) => field.handleChange(value)}
@@ -239,7 +239,7 @@ export default function MaterialForm({
                   validators={{
                     onChange: ({ value }) => {
                       if (!Array.isArray(value) || value.length === 0) {
-                        return "At least 1 quiz question is required";
+                          return "Minimal 1 pertanyaan kuis wajib ada";
                       }
                       return undefined;
                     },
@@ -251,7 +251,7 @@ export default function MaterialForm({
                     >
                       <FieldContent>
                         <div className="flex items-center justify-between gap-3">
-                          <FieldLabel>Questions</FieldLabel>
+                        <FieldLabel>Pertanyaan</FieldLabel>
                           <QuizPreviewDialog questions={field.state.value ?? []} />
                         </div>
                         <QuizQuestionsEditor
@@ -279,7 +279,7 @@ export default function MaterialForm({
                   validators={{
                     onChange: ({ value }) => {
                       if (!value || value.trim().length === 0) {
-                        return "Video URL is required for video materials";
+                        return "URL video wajib diisi untuk materi video";
                       }
                       try {
                         new URL(value);
@@ -295,7 +295,7 @@ export default function MaterialForm({
                       data-invalid={field.state.meta.errors.length > 0 || undefined}
                     >
                       <FieldContent>
-                        <FieldLabel htmlFor={field.name}>Video URL</FieldLabel>
+                        <FieldLabel htmlFor={field.name}>URL Video</FieldLabel>
                         <Input
                           id={field.name}
                           name={field.name}
@@ -306,7 +306,7 @@ export default function MaterialForm({
                           onChange={(event) => field.handleChange(event.target.value)}
                         />
                         <FieldDescription>
-                          Enter the URL of the video (YouTube, Vimeo, etc.).
+                          Masukkan URL video (YouTube, Vimeo, dll.).
                         </FieldDescription>
                         <FieldError>
                           {firstErrorMessage(field.state.meta.errors as unknown[])}
@@ -339,12 +339,12 @@ export default function MaterialForm({
                 {isSubmitting ? (
                   <>
                     <Loader2Icon className="animate-spin" />
-                    {mode === "create" ? "Creating..." : "Saving..."}
+                    {mode === "create" ? "Membuat..." : "Menyimpan..."}
                   </>
                 ) : (
                   <>
                     {mode === "create" ? <PlusIcon /> : <SaveIcon />}
-                    {mode === "create" ? "Create Material" : "Save Changes"}
+                    {mode === "create" ? "Buat Materi" : "Simpan Perubahan"}
                   </>
                 )}
               </Button>

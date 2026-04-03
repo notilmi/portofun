@@ -90,7 +90,7 @@ async function StudentCourseOverviewInner({ params }: PageProps) {
               href="/learning-center/dashboard/my-learnings"
               className="hover:underline"
             >
-              My Learnings
+              Pembelajaran Saya
             </Link>
             <span className="px-2">/</span>
             <span className="font-medium text-foreground">{course.title}</span>
@@ -102,14 +102,14 @@ async function StudentCourseOverviewInner({ params }: PageProps) {
           {resumeHref ? (
             <Button asChild>
               <Link href={resumeHref}>
-                {percent === 100 ? "Review" : "Resume"}
+                {percent === 100 ? "Tinjau" : "Lanjutkan"}
               </Link>
             </Button>
           ) : null}
 
           <Button asChild variant="outline">
             <Link href="/learning-center/dashboard/catalog">
-              Browse catalog
+              Jelajahi katalog
             </Link>
           </Button>
         </div>
@@ -120,13 +120,13 @@ async function StudentCourseOverviewInner({ params }: PageProps) {
         <div className="space-y-4 lg:col-span-8">
           <Card>
             <CardHeader>
-              <CardTitle>Overview</CardTitle>
+              <CardTitle>Ikhtisar</CardTitle>
               <CardDescription>{course.description}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Progress</span>
+                    <span className="text-muted-foreground">Kemajuan</span>
                   <span className="font-medium">{percent}%</span>
                 </div>
                 <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
@@ -137,12 +137,12 @@ async function StudentCourseOverviewInner({ params }: PageProps) {
                 </div>
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <p className="text-xs text-muted-foreground">
-                    {completedCount}/{totalCount} materials completed
+                    {completedCount}/{totalCount} materi selesai
                   </p>
                   {resumeHref ? (
                     <Button asChild size="sm">
                       <Link href={resumeHref}>
-                        {percent === 100 ? "Review" : "Resume"}
+                        {percent === 100 ? "Tinjau" : "Lanjutkan"}
                       </Link>
                     </Button>
                   ) : null}
@@ -161,15 +161,14 @@ async function StudentCourseOverviewInner({ params }: PageProps) {
                     {chapter.sequenceOrder}. {chapter.title}
                   </CardTitle>
                   <CardDescription>
-                    {chapter.materials.length} material
-                    {chapter.materials.length === 1 ? "" : "s"}
+                    {chapter.materials.length} materi
                   </CardDescription>
                 </CardHeader>
 
                 <CardContent>
                   {chapter.materials.length === 0 ? (
                     <p className="text-sm text-muted-foreground">
-                      No materials yet.
+                      Belum ada materi.
                     </p>
                   ) : (
                     <ul className="space-y-2">
@@ -203,7 +202,7 @@ async function StudentCourseOverviewInner({ params }: PageProps) {
                               <Link
                                 href={`/learning-center/dashboard/courses/${courseId}/${chapter.id}/material/${m.id}`}
                               >
-                                Open
+                                 Buka
                               </Link>
                             </Button>
                           </li>

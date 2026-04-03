@@ -43,7 +43,9 @@ export default async function DashboardLayout({
     <TooltipProvider>
       <div className="h-(--navbar-height) w-full flex justify-between gap-4 py-4 px-4 md:px-8 items-center">
         <div className="flex items-center gap-2">
-          <h1 className="text-2xl font-bold">Portofun</h1>
+          {/*<h1 className="text-2xl font-bold">Portofun</h1>*/}
+          {/*eslint-disable-next-line @next/next/no-img-element*/}
+          <img src={"/portofun.svg"} alt="Portofun" className="w-32" />
         </div>
         <Suspense fallback={<DashboardUserAvatarFallback />}>
           <DashboardUserAvatar />
@@ -54,7 +56,7 @@ export default async function DashboardLayout({
           <Sidebar />
         </div>
         <ScrollArea className="max-w-6xl w-full h-[calc(100dvh-var(--navbar-height))] overflow-auto mx-auto col-span-5 p-4 ">
-          <div>{children}</div>
+          <div className="p-1">{children}</div>
         </ScrollArea>
       </div>
     </TooltipProvider>

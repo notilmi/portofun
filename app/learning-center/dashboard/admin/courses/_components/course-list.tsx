@@ -27,9 +27,9 @@ export default function CourseList({
     return (
       <Card>
         <CardHeader>
-          <CardTitle>No courses yet</CardTitle>
+          <CardTitle>Belum ada kursus</CardTitle>
           <CardDescription>
-            Create your first course from the form above.
+            Buat kursus pertama Anda dari formulir di atas.
           </CardDescription>
         </CardHeader>
       </Card>

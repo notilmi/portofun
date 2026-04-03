@@ -41,7 +41,7 @@ export default function CompleteMaterialButton({
         return;
       }
 
-      toast.success("Marked as completed");
+      toast.success("Sudah ditandai selesai");
       router.refresh();
     } finally {
       setIsPending(false);
@@ -55,7 +55,7 @@ export default function CompleteMaterialButton({
       disabled={disabled || isPending}
       variant="default"
     >
-      {isPending ? "Saving..." : "Mark as completed"}
+      {isPending ? "Menyimpan..." : "Tandai sebagai selesai"}
     </Button>
   );
 }

@@ -119,9 +119,9 @@ export default function ClientPage({ initialCourses }: ClientPageProps) {
     <div className="space-y-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Course Management</h1>
+          <h1 className="text-2xl font-bold">Manajemen Kursus</h1>
           <p className="text-sm text-muted-foreground">
-            Create, archive, restore, and delete courses for the learning center.
+            Buat, arsipkan, pulihkan, dan hapus kursus untuk Learning Center.
           </p>
         </div>
 
@@ -129,14 +129,14 @@ export default function ClientPage({ initialCourses }: ClientPageProps) {
           <DialogTrigger asChild>
             <Button>
               <PlusIcon />
-              Create Course
+              Buat Kursus
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Create New Course</DialogTitle>
+              <DialogTitle>Buat Kursus Baru</DialogTitle>
               <DialogDescription>
-                Add a new course to your learning center catalog.
+                Tambahkan kursus baru ke katalog Learning Center Anda.
               </DialogDescription>
             </DialogHeader>
             <CreateCourseForm onSubmit={handleCreateCourse} />
@@ -151,7 +151,7 @@ export default function ClientPage({ initialCourses }: ClientPageProps) {
       ) : null}
 
       <div className="rounded-xl border bg-card p-4">
-        <h2 className="mb-3 text-lg font-semibold">All Courses</h2>
+        <h2 className="mb-3 text-lg font-semibold">Semua Kursus</h2>
         <CourseList
           courses={sortedCourses}
           busyCourseId={busyCourseId}

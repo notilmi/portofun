@@ -45,19 +45,20 @@ export default function QuizPreviewDialog({
         onClick={() => setOpen(true)}
       >
         <EyeIcon />
-        Preview Quiz
+        Pratinjau Kuis
       </Button>
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-3xl">
           <DialogHeader>
-            <DialogTitle>Quiz Preview</DialogTitle>
+            <DialogTitle>Pratinjau Kuis</DialogTitle>
             <DialogDescription>
-              This preview uses the current questions in the form (not necessarily saved yet).
+              Pratinjau ini menggunakan pertanyaan yang ada saat ini di formulir
+              (belum tentu tersimpan).
             </DialogDescription>
           </DialogHeader>
 
-          <QuizViewer questions={questions} submitLabel="Finish Preview" />
+          <QuizViewer questions={questions} submitLabel="Selesai Pratinjau" />
         </DialogContent>
       </Dialog>
     </>

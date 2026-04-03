@@ -78,7 +78,7 @@ export default function DeleteMaterialDialog({
         setIsDeleting(false);
       }, 300);
     } catch (err) {
-      setError("An unexpected error occurred. Please try again.");
+      setError("Terjadi kesalahan tak terduga. Silakan coba lagi.");
       setIsDeleting(false);
     }
   };
@@ -92,11 +92,11 @@ export default function DeleteMaterialDialog({
               <TriangleAlertIcon className="h-5 w-5 text-destructive" />
             </div>
             <div className="flex-1">
-              <DialogTitle>Delete Material</DialogTitle>
+              <DialogTitle>Hapus Materi</DialogTitle>
               <DialogDescription className="mt-2">
-                Are you sure you want to delete <strong>{material.title}</strong>?
-                This action cannot be undone and will permanently remove the material
-                from this chapter.
+                Apakah Anda yakin ingin menghapus <strong>{material.title}</strong>?
+                Tindakan ini tidak dapat dibatalkan dan akan menghapus materi ini
+                dari bab ini secara permanen.
               </DialogDescription>
             </div>
           </div>
@@ -110,9 +110,9 @@ export default function DeleteMaterialDialog({
 
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline" disabled={isDeleting}>
-              Cancel
-            </Button>
+              <Button variant="outline" disabled={isDeleting}>
+               Batal
+              </Button>
           </DialogClose>
           <Button
             variant="destructive"
@@ -122,11 +122,11 @@ export default function DeleteMaterialDialog({
             {isDeleting ? (
               <>
                 <Loader2Icon className="animate-spin" />
-                Deleting...
-              </>
-            ) : (
-              "Delete Material"
-            )}
+                    Menghapus...
+                  </>
+                ) : (
+                "Hapus Materi"
+                )}
           </Button>
         </DialogFooter>
       </DialogContent>
