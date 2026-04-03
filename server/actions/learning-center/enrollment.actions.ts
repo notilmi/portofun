@@ -11,6 +11,7 @@ import {
   listEnrollmentsByUserSchema,
   markAsCompletedSchema,
   updateEnrollmentStatusSchema,
+  uuidSchema,
   type DeleteEnrollmentInput,
   type DropCourseInput,
   type EnrollUserInput,
@@ -23,6 +24,7 @@ import {
 } from "@/domain/services/schema/enrollment.schema";
 import {
   handleServerActionError,
+  ServerActionError,
   type ServerActionResponse,
   validateInput,
 } from "@/server/actions/_common";
@@ -71,6 +73,32 @@ export async function getEnrollmentsByUser(input: ListEnrollmentsByUserInput) {
   return EnrollmentService.listEnrollmentsByUser(parsedInput);
 }
 
+export async function getMyEnrollments(
+  input?: Omit<ListEnrollmentsByUserInput, "userId">,
+) {
+  // NOTE: cannot be cached because it depends on request headers/session.
+  const session = await getSessionThrowable(false);
+
+  const parsedInput = validateInput(listEnrollmentsByUserSchema, {
+    userId: session.id,
+    ...input,
+  });
+
+  return EnrollmentService.listEnrollmentsByUser(parsedInput);
+}
+
+export async function getMyEnrollment(input: { courseId: string }) {
+  // NOTE: cannot be cached because it depends on request headers/session.
+  const session = await getSessionThrowable(false);
+
+  const parsedInput = validateInput(getEnrollmentSchema, {
+    userId: session.id,
+    courseId: input.courseId,
+  });
+
+  return EnrollmentService.getEnrollment(parsedInput);
+}
+
 /**
  * Write Actions
  *
@@ -85,6 +113,27 @@ export async function enrollUser(
   try {
     await getSessionThrowable(true);
     const parsedInput = validateInput(enrollUserSchema, input);
+
+    await EnrollmentService.enrollUser(parsedInput);
+
+    revalidateTag("enrollmentsByCourse", "max");
+    revalidateTag("enrollmentsByUser", "max");
+    revalidateTag("enrollment", "max");
+  } catch (error) {
+    return handleServerActionError(error);
+  }
+}
+
+export async function enrollSelf(
+  input: { courseId: string },
+): Promise<ServerActionResponse<void>> {
+  try {
+    const session = await getSessionThrowable(false);
+
+    const parsedInput = validateInput(enrollUserSchema, {
+      userId: session.id,
+      courseId: input.courseId,
+    });
 
     await EnrollmentService.enrollUser(parsedInput);
 

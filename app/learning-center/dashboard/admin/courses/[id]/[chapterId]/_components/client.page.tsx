@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { materialTypeLabel } from "@/lib/learning-center/material-type";
 import DeleteMaterialDialog from "./delete-material-dialog";
 import EditChapterDialog from "./edit-chapter-dialog";
 
@@ -153,7 +154,7 @@ export default function ClientPage({
                 >
                   <div>
                     <p className="text-sm text-muted-foreground">
-                      Material {material.sequenceOrder} - {material.type}
+                      Material {material.sequenceOrder} - {materialTypeLabel(material.type)}
                     </p>
                     <p className="font-medium">{material.title}</p>
                   </div>

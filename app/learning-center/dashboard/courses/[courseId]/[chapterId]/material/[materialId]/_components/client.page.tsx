@@ -21,8 +21,6 @@ function isActionError(value: unknown): value is ActionError {
 }
 
 type ClientPageProps = {
-  courseId: string;
-  chapterId: string;
   userId: string;
   material: {
     id: string;
@@ -94,11 +92,6 @@ export default function ClientPage({ material, userId }: ClientPageProps) {
 
   return (
     <div className="space-y-4">
-      <div>
-        <h1 className="text-2xl font-bold">{material.title}</h1>
-        <p className="text-sm text-muted-foreground">Quiz</p>
-      </div>
-
       {feedback ? (
         <div className="rounded-lg border bg-muted/20 px-3 py-2 text-sm">{feedback}</div>
       ) : null}

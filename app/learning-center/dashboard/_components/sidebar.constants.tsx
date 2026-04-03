@@ -10,11 +10,11 @@ export const DASHBOARD_ROUTES: DashboardRoute[] = [
   },
   {
     label: "Katalog",
-    href: "/learning-center/catalog",
+    href: "/learning-center/dashboard/catalog",
   },
   {
     label: "Pembelajaran Saya",
-    href: "/learning-center/my-learnings",
+    href: "/learning-center/dashboard/my-learnings",
   },
 ];
 
