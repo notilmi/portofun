@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import MaterialPageSkeleton from "../../../../../_components/material-page-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { getSession } from "@/server/actions/auth";
 import { getCourseHierarchy } from "@/server/actions/learning-center/course.actions";
@@ -218,9 +219,7 @@ async function MaterialContent({ params }: PageProps) {
 
 export default function MaterialPage({ params }: PageProps) {
   return (
-    <Suspense
-      fallback={<div className="text-sm text-muted-foreground">Loading...</div>}
-    >
+    <Suspense fallback={<MaterialPageSkeleton />}>
       <MaterialContent params={params} />
     </Suspense>
   );

@@ -4,6 +4,7 @@ import { Suspense } from "react";
 
 import { Button } from "@/components/ui/button";
 import LearningCenterCourseCard from "@/app/learning-center/dashboard/_components/learning-center-course-card";
+import MyLearningsSkeleton from "../_components/my-learnings-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { getSession } from "@/server/actions/auth";
 import { getMyEnrollments } from "@/server/actions/learning-center/enrollment.actions";
@@ -127,9 +128,7 @@ async function MyLearningsInner() {
 
 export default function MyLearningsPage() {
   return (
-    <Suspense
-      fallback={<p className="text-sm text-muted-foreground">Loading…</p>}
-    >
+    <Suspense fallback={<MyLearningsSkeleton />}>
       <MyLearningsInner />
     </Suspense>
   );

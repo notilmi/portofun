@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import CoursePageSkeleton from "../../_components/course-page-skeleton";
 import { Separator } from "@/components/ui/separator";
 import { getSession } from "@/server/actions/auth";
 import { getCourseHierarchy } from "@/server/actions/learning-center/course.actions";
@@ -227,9 +228,7 @@ async function StudentCourseOverviewInner({ params }: PageProps) {
 
 export default function StudentCourseOverviewPage(props: PageProps) {
   return (
-    <Suspense
-      fallback={<p className="text-sm text-muted-foreground">Loading…</p>}
-    >
+    <Suspense fallback={<CoursePageSkeleton />}>
       <StudentCourseOverviewInner {...props} />
     </Suspense>
   );
