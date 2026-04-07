@@ -1,10 +1,6 @@
 "use client";
 import Link from "next/link";
-import {
-  DASHBOARD_ROUTES,
-  DashboardRoute,
-  getDashboardRoutes,
-} from "./sidebar.constants";
+import { DashboardRoute, getDashboardRoutes } from "./sidebar.constants";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { authClient } from "@/server/better-auth/auth.client";
