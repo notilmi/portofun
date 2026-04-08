@@ -39,15 +39,7 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           {/*<h1 className="text-2xl font-bold">Portofun</h1>*/}
           {/*eslint-disable-next-line @next/next/no-img-element*/}
-          <img
-            src={
-              mounted && resolvedTheme === "dark"
-                ? "/portofun-dark.svg"
-                : "/portofun.svg"
-            }
-            alt="Portofun"
-            className="w-32"
-          />
+          <img src={"/portofun.svg"} alt="Portofun" className="w-32" />
         </Link>
 
         {/* Desktop Navigation */}
@@ -88,15 +80,7 @@ export function Navbar() {
                 onClick={handleLinkClick}
               >
                 {/*eslint-disable-next-line @next/next/no-img-element*/}
-                <img
-                  src={
-                    mounted && resolvedTheme === "dark"
-                      ? "/portofun-dark.svg"
-                      : "/portofun.svg"
-                  }
-                  alt="Portofun"
-                  className="w-24"
-                />
+                <img src={"/portofun.svg"} alt="Portofun" className="w-24" />
               </Link>
 
               {/* Mobile Links */}
