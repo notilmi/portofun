@@ -36,15 +36,14 @@ export function Hero() {
           {/* Main heading */}
           <div className="flex flex-col gap-4">
             <h1 className="text-balance text-5xl font-bold leading-tight tracking-tight lg:text-7xl">
-              Kuasai Investasi &{" "}
+              Designed To Educate,{" "}
               <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-                Literasi Keuangan
+                Built To Invest
               </span>
             </h1>
             <p className="mx-auto max-w-2xl text-balance text-lg text-muted-foreground lg:text-xl">
-              Belajar investasi saham, reksa dana, dan manajemen keuangan dari
-              para ahli. Wujudkan kebebasan finansial dengan pembelajaran yang
-              praktis dan mudah dipahami.
+              Belajar portofolio investasi dengan cara yang lebih fun,
+              interaktif & mudah dipahami
             </p>
           </div>
 

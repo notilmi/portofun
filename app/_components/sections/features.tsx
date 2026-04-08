@@ -6,6 +6,7 @@ import {
   IconPigMoney,
   IconTrendingUp,
   IconUsersGroup,
+  IconStack2,
 } from "@tabler/icons-react";
 
 const features = [
@@ -17,15 +18,15 @@ const features = [
   },
   {
     icon: IconChartLine,
-    title: "Analisis Fundamental & Teknikal",
+    title: "Pembelajaran Interaktif",
     description:
       "Kuasai cara membaca laporan keuangan, analisis grafik, dan strategi investasi yang terbukti efektif.",
   },
   {
-    icon: IconPigMoney,
-    title: "Perencanaan Keuangan",
+    icon: IconStack2,
+    title: "Terstruktur & Bertahap",
     description:
-      "Belajar mengatur keuangan pribadi, budgeting, dan membangun dana darurat untuk masa depan yang lebih baik.",
+      "Program pembelajaran yang disusun secara terstruktur dan bertahap.",
   },
 ];
 

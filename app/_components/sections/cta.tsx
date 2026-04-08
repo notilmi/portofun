@@ -27,10 +27,9 @@ export function CTA() {
               <h2 className="text-balance text-4xl font-bold text-primary-foreground lg:text-5xl">
                 Siap Wujudkan Kebebasan Finansial?
               </h2>
-              <p className="mx-auto max-w-2xl text-balance text-lg text-primary-foreground/90">
-                Bergabunglah dengan ribuan investor sukses di Indonesia dan
-                dapatkan akses ke seluruh materi pembelajaran. Mulai perjalanan
-                investasi Anda dengan trial gratis 14 hari.
+              <p className="mx-auto text-balance text-lg text-primary-foreground/90">
+                Tanpa pemahaman yang cukup, keputusan yang diambil bisa beresiko
+                dan tidak berkelanjutan
               </p>
             </div>
 

@@ -3,9 +3,9 @@ import {
   Hero,
   Features,
   About,
-  HowItWorks,
-  Testimonials,
-  FAQ,
+  // HowItWorks,
+  // Testimonials,
+  // FAQ,
   CTA,
   Footer,
 } from "./_components/sections";
@@ -18,9 +18,9 @@ export default function Home() {
         <Hero />
         <Features />
         <About />
-        <HowItWorks />
-        <Testimonials />
-        <FAQ />
+        {/*<HowItWorks />*/}
+        {/*<Testimonials />*/}
+        {/*<FAQ />*/}
         <CTA />
         <Footer />
       </main>

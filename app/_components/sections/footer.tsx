@@ -44,9 +44,9 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-muted/30">
-      <div className="container mx-auto max-w-6xl px-4 py-12 lg:py-16">
-        <div className="grid gap-8 lg:grid-cols-5">
-          {/* Brand column */}
+      <div className="container mx-auto max-w-6xl px-4 py-8">
+        {/* Temporarily disabled - full footer content */}
+        {/* <div className="grid gap-8 lg:grid-cols-5">
           <div className="flex flex-col gap-4 lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-2">
               <div className="flex size-8 items-center justify-center rounded-lg bg-primary">
@@ -77,7 +77,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links columns */}
           <div className="flex flex-col gap-4">
             <h3 className="text-sm font-semibold">Product</h3>
             <ul className="flex flex-col gap-3">
@@ -144,6 +143,13 @@ export function Footer() {
               </Link>
             ))}
           </div>
+        </div> */}
+
+        {/* Temporary minimal footer - only copyright */}
+        <div className="flex items-center justify-center">
+          <p className="text-sm text-muted-foreground">
+            © 2026 Portofun. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
