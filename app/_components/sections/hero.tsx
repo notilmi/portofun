@@ -19,8 +19,8 @@ export function Hero() {
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 py-10">
       {/* Decorative elements */}
       <div className="absolute inset-0 z-10 overflow-hidden">
-        <div className="absolute left-1/4 top-20 size-64 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute bottom-20 right-1/4 size-96 rounded-full bg-accent/10 blur-3xl" />
+        <div className="absolute left-1/4 top-20 size-64 rounded-full bg-primary/10 dark:bg-primary/40 blur-3xl" />
+        <div className="absolute bottom-20 right-1/4 size-96 rounded-full bg-accent/10 dark:bg-accent/40 blur-3xl" />
       </div>
 
       <div className="container mx-auto max-w-6xl">
