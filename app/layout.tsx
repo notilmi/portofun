@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistMono = Geist_Mono({
   variable: "--font-mono",
@@ -13,7 +13,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Portofun | Belajar Literasi Keuangan",
-  description: "Portofun membantu pelajar Indonesia belajar investasi dengan cara yang interaktif, terstruktur, dan aman.",
+  description:
+    "Portofun membantu pelajar Indonesia belajar investasi dengan cara yang interaktif, terstruktur, dan aman.",
 };
 
 export default function RootLayout({
@@ -24,7 +25,13 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={cn("h-full", "antialiased", geistMono.variable, "font-sans", inter.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistMono.variable,
+        "font-sans",
+        inter.variable,
+      )}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">

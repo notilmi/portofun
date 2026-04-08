@@ -4,7 +4,6 @@ import {
   Features,
   About,
   HowItWorks,
-  Pricing,
   Testimonials,
   FAQ,
   CTA,

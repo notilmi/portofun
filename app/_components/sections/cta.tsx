@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { IconArrowRight, IconSparkles } from "@tabler/icons-react";
 import Link from "next/link";
+import { WaitlistDialog } from "../waitlist-dialog";
 
 export function CTA() {
   return (
@@ -34,24 +35,23 @@ export function CTA() {
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button
-                size="lg"
-                variant="secondary"
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-                asChild
-              >
-                <Link href="/learning-center/dashboard">
-                  Daftar Sekarang Gratis
+              <WaitlistDialog>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                >
+                  Daftar Waitlist Gratis
                   <IconArrowRight data-icon="inline-end" />
-                </Link>
-              </Button>
+                </Button>
+              </WaitlistDialog>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
                 asChild
               >
-                <Link href="#features">Lihat Kursus</Link>
+                <Link href="#features">Lihat Fitur</Link>
               </Button>
             </div>
 

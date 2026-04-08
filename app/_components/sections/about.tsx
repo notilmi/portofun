@@ -2,81 +2,87 @@ import { Button } from "@/components/ui/button";
 import { IconArrowRight, IconCheck } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const benefits = [
-  "Kurikulum dirancang oleh praktisi pasar modal bersertifikat",
-  "Materi pembelajaran berbahasa Indonesia yang mudah dipahami",
-  "Studi kasus nyata dari Bursa Efek Indonesia (BEI)",
-  "Akses selamanya ke materi dan update terbaru",
-  "Live webinar dengan fund manager dan analis profesional",
-  "Mentoring langsung dari investor berpengalaman",
-];
+import { WaitlistDialog } from "../waitlist-dialog";
 
 export function About() {
   return (
-    <section id="about" className="px-4 py-24 lg:py-32">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          {/* Image side */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted">
-              {/* Placeholder for the open book image */}
-              <div className="flex size-full items-center justify-center">
-                <div className="flex flex-col items-center gap-4 text-muted-foreground">
-                  <IconCheck className="size-24" />
-                  <p className="text-sm">Image: /assets/open-book.png</p>
-                </div>
-              </div>
-              {/* Uncomment when image is added */}
-              {/* <Image
-                src="/assets/open-book.png"
-                alt="Open book representing learning"
-                fill
-                className="object-cover"
-              /> */}
+    <section id="about" className="overflow-hidden py-24 lg:py-32">
+      <div className="container mx-auto">
+        <div className="grid items-center gap-0 overflow-hidden rounded-3xl lg:grid-cols-2">
+          {/* Content side */}
+          <div className="relative overflow-hidden bg-primary px-8 py-16 lg:px-12 lg:py-24">
+            {/* Background decoration */}
+            <div className="absolute inset-0 -z-0">
+              <div className="absolute right-0 top-0 size-96 rounded-full bg-primary-foreground/10 blur-3xl" />
+              <div className="absolute bottom-0 left-0 size-96 rounded-full bg-primary-foreground/10 blur-3xl" />
             </div>
 
-            {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 -z-10 size-48 rounded-2xl bg-primary/10 blur-3xl" />
+            {/* Content */}
+            <div className="relative z-10 flex flex-col gap-8">
+              <div className="flex flex-col gap-4">
+                <h2 className="text-balance text-4xl font-bold text-primary-foreground lg:text-5xl">
+                  Platform Edukasi Finansial Terlengkap
+                </h2>
+                <p className="text-balance text-lg text-primary-foreground/90 lg:text-xl">
+                  Dapatkan akses ke ratusan materi pembelajaran, simulasi
+                  portfolio real-time, dan bimbingan langsung dari praktisi
+                  pasar modal bersertifikat. Semua dalam satu platform.
+                </p>
+              </div>
+
+              {/* Feature list */}
+              <div className="flex flex-col gap-3">
+                {[
+                  "Dashboard interaktif untuk tracking progress",
+                  "Simulasi trading tanpa risiko kehilangan uang",
+                  "Analisis saham dan reksa dana real-time",
+                  "Mentoring dari investor profesional",
+                  "Update materi dan market insight terbaru",
+                ].map((feature) => (
+                  <div key={feature} className="flex items-start gap-3">
+                    <div className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-foreground/20">
+                      <IconCheck className="size-3 text-primary-foreground" />
+                    </div>
+                    <p className="text-primary-foreground/90">{feature}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex flex-wrap items-center gap-4">
+                <WaitlistDialog>
+                  <Button
+                    size="lg"
+                    variant="secondary"
+                    className="bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                  >
+                    Daftar Sekarang
+                  </Button>
+                </WaitlistDialog>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/20 bg-transparent text-primary-foreground hover:bg-primary-foreground/10"
+                  asChild
+                >
+                  <Link href="#pricing">
+                    Lihat Harga
+                    <IconArrowRight data-icon="inline-end" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
 
-          {/* Content side */}
-          <div className="order-1 flex flex-col gap-6 lg:order-2">
-            <div className="flex flex-col gap-4">
-              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-accent/10 px-4 py-1.5 text-sm font-medium text-accent-foreground">
-                Tentang Portofun
-              </div>
-              <h2 className="text-balance text-4xl font-bold lg:text-5xl">
-                Investasi Cerdas Dimulai dari Edukasi yang Tepat
-              </h2>
-              <p className="text-balance text-lg text-muted-foreground">
-                Portofun hadir untuk menjembatani kesenjangan literasi keuangan
-                di Indonesia. Kami percaya bahwa setiap orang berhak mendapatkan
-                akses ke edukasi finansial berkualitas untuk mencapai kebebasan
-                finansial mereka.
-              </p>
-            </div>
-
-            {/* Benefits list */}
-            <div className="flex flex-col gap-3">
-              {benefits.map((benefit) => (
-                <div key={benefit} className="flex items-start gap-3">
-                  <div className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <IconCheck className="size-3 text-primary" />
-                  </div>
-                  <p className="text-muted-foreground">{benefit}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-4">
-              <Button size="lg" asChild>
-                <Link href="/learning-center/dashboard">
-                  Mulai Belajar Investasi
-                  <IconArrowRight data-icon="inline-end" />
-                </Link>
-              </Button>
-            </div>
+          {/* Image side */}
+          <div className="relative aspect-4/3 overflow-hidden bg-muted lg:aspect-auto lg:h-full lg:min-h-[600px]">
+            <Image
+              src="/assets/learning-page.png"
+              alt="Portofun Dashboard - Platform pembelajaran investasi interaktif"
+              fill
+              className="object-cover object-left"
+              priority
+            />
           </div>
         </div>
       </div>

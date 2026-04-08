@@ -1,15 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { IconArrowRight, IconBook, IconSparkles } from "@tabler/icons-react";
+import { MacbookScroll } from "@/components/ui/macbook-scroll";
+import { IconArrowRight, IconBook } from "@tabler/icons-react";
 import Link from "next/link";
+import { WaitlistDialog } from "../waitlist-dialog";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 py-20">
-      {/* Background gradient */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-background to-background" />
-
+    <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 py-10">
       {/* Decorative elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
+      <div className="absolute inset-0 z-10 overflow-hidden">
         <div className="absolute left-1/4 top-20 size-64 rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute bottom-20 right-1/4 size-96 rounded-full bg-accent/10 blur-3xl" />
       </div>
@@ -17,12 +16,12 @@ export function Hero() {
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col items-center gap-8 text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm backdrop-blur-sm">
+          {/*<div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm backdrop-blur-sm">
             <IconSparkles className="size-4 text-primary" />
             <span className="text-muted-foreground">
               Platform Edukasi Finansial #1 di Indonesia
             </span>
-          </div>
+          </div>*/}
 
           {/* Main heading */}
           <div className="flex flex-col gap-4">
@@ -41,12 +40,12 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Button size="lg" asChild>
-              <Link href="/learning-center/dashboard">
+            <WaitlistDialog>
+              <Button size="lg">
                 <IconBook data-icon="inline-start" />
-                Mulai Belajar Gratis
-              </Link>
-            </Button>
+                Daftar Waitlist
+              </Button>
+            </WaitlistDialog>
             <Button size="lg" variant="outline" asChild>
               <Link href="#features">
                 Pelajari Lebih Lanjut
@@ -56,7 +55,7 @@ export function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-8 lg:gap-12">
+          {/*<div className="mt-8 flex flex-wrap items-center justify-center gap-8 lg:gap-12">
             <div className="flex flex-col gap-1">
               <div className="text-3xl font-bold">50K+</div>
               <div className="text-sm text-muted-foreground">
@@ -75,7 +74,10 @@ export function Hero() {
                 Rating Pengguna
               </div>
             </div>
-          </div>
+          </div>*/}
+        </div>
+        <div className="hidden md:flex justify-center">
+          <MacbookScroll src={`/assets/dashboard.png`} showGradient={true} />
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { IconCheck, IconSparkles, IconCrown } from "@tabler/icons-react";
 import Link from "next/link";
+import { WaitlistDialog } from "../waitlist-dialog";
 
 const plans = [
   {
@@ -120,14 +121,15 @@ export function Pricing() {
                 </CardHeader>
 
                 <CardContent className="flex flex-1 flex-col gap-6 p-6 pt-2">
-                  <Button
-                    size="lg"
-                    variant={plan.highlighted ? "default" : "outline"}
-                    className="w-full"
-                    asChild
-                  >
-                    <Link href="/learning-center/dashboard">{plan.cta}</Link>
-                  </Button>
+                  <WaitlistDialog>
+                    <Button
+                      size="lg"
+                      variant={plan.highlighted ? "default" : "outline"}
+                      className="w-full"
+                    >
+                      {plan.cta}
+                    </Button>
+                  </WaitlistDialog>
 
                   <div className="flex flex-col gap-3">
                     {plan.features.map((feature) => (

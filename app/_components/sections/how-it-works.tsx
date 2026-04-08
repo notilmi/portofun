@@ -33,7 +33,7 @@ const steps = [
     step: "04",
     title: "Raih Kesuksesan",
     description:
-      "Dapatkan sertifikat, bergabung dengan komunitas, dan wujudkan tujuan finansial Anda.",
+      "Raih kesuksesan dalam finansial dan tidak tersentuh dari instrument berbau judi online",
   },
 ];
 
@@ -67,14 +67,16 @@ export function HowItWorks() {
                     <div className="absolute -top-5 left-6 flex size-10 items-center justify-center rounded-full bg-primary text-base font-bold text-primary-foreground shadow-lg">
                       {index + 1}
                     </div>
-                    
+
                     <div className="mt-2 flex size-12 items-center justify-center rounded-lg bg-primary/10">
                       <Icon className="size-6 text-primary" />
                     </div>
-                    
+
                     <div className="flex flex-col gap-2">
                       <h3 className="text-xl font-semibold">{step.title}</h3>
-                      <p className="text-muted-foreground">{step.description}</p>
+                      <p className="text-muted-foreground">
+                        {step.description}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>

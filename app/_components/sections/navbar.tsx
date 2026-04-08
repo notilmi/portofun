@@ -2,10 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import { IconMenu2 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { WaitlistDialog } from "../waitlist-dialog";
 
 const navLinks = [
   { label: "Fitur", href: "#features" },
@@ -24,7 +25,7 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur">
+    <header className="w-full bg-background/95 backdrop-blur">
       <nav className="container mx-auto flex h-24 max-w-7xl items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -48,12 +49,9 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden items-center gap-4 lg:flex">
-          <Button variant="ghost" asChild>
-            <Link href="/auth">Masuk</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/learning-center/dashboard">Mulai Belajar Gratis</Link>
-          </Button>
+          <WaitlistDialog>
+            <Button>Daftar Waitlist</Button>
+          </WaitlistDialog>
         </div>
 
         {/* Mobile Menu */}
@@ -64,32 +62,26 @@ export function Navbar() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <div className="flex flex-col gap-6 py-6">
+          <SheetContent side="right" className="w-full sm:w-100">
+            <div className="flex h-full flex-col gap-8 p-6">
               {/* Mobile Logo */}
               <Link
                 href="/"
                 className="flex items-center gap-2"
                 onClick={handleLinkClick}
               >
-                <Image
-                  src="/portofun.svg"
-                  alt="Portofun"
-                  width={32}
-                  height={32}
-                  className="size-8"
-                />
-                <span className="text-xl font-bold">Portofun</span>
+                {/*eslint-disable-next-line @next/next/no-img-element*/}
+                <img src={"/portofun.svg"} alt="Portofun" className="w-24" />
               </Link>
 
               {/* Mobile Links */}
-              <nav className="flex flex-col gap-4">
+              <nav className="flex flex-1 flex-col gap-2">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={handleLinkClick}
-                    className="text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    className="rounded-lg py-3 text-base font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                   >
                     {link.label}
                   </Link>
@@ -97,20 +89,12 @@ export function Navbar() {
               </nav>
 
               {/* Mobile CTA */}
-              <div className="flex flex-col gap-3 pt-4">
-                <Button variant="outline" asChild className="w-full">
-                  <Link href="/auth" onClick={handleLinkClick}>
-                    Masuk
-                  </Link>
-                </Button>
-                <Button asChild className="w-full">
-                  <Link
-                    href="/learning-center/dashboard"
-                    onClick={handleLinkClick}
-                  >
-                    Mulai Belajar Gratis
-                  </Link>
-                </Button>
+              <div className="flex flex-col gap-3 border-t pt-6">
+                <WaitlistDialog>
+                  <Button className="w-full" size="lg">
+                    Daftar Waitlist
+                  </Button>
+                </WaitlistDialog>
               </div>
             </div>
           </SheetContent>

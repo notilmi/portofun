@@ -27,24 +27,6 @@ const features = [
     description:
       "Belajar mengatur keuangan pribadi, budgeting, dan membangun dana darurat untuk masa depan yang lebih baik.",
   },
-  {
-    icon: IconTrendingUp,
-    title: "Simulasi Portfolio",
-    description:
-      "Praktikkan strategi investasi dengan simulasi portfolio tanpa risiko kehilangan uang sungguhan.",
-  },
-  {
-    icon: IconCertificate,
-    title: "Sertifikat Resmi",
-    description:
-      "Dapatkan sertifikat yang diakui setelah menyelesaikan setiap kursus untuk menunjang karir Anda.",
-  },
-  {
-    icon: IconUsersGroup,
-    title: "Komunitas Investor",
-    description:
-      "Bergabung dengan ribuan investor Indonesia, sharing pengalaman, dan belajar bersama mencapai tujuan finansial.",
-  },
 ];
 
 export function Features() {
@@ -77,7 +59,9 @@ export function Features() {
                   </div>
                   <div className="flex flex-col gap-2">
                     <h3 className="text-xl font-semibold">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
+                    <p className="text-muted-foreground">
+                      {feature.description}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
