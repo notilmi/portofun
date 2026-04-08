@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { WaitlistDialog } from "../waitlist-dialog";
+import { ModeToggle } from "../../../components/theme-toggle";
 
 const navLinks = [
   { label: "Fitur", href: "#features" },
@@ -52,6 +53,7 @@ export function Navbar() {
           <WaitlistDialog>
             <Button>Daftar Waitlist</Button>
           </WaitlistDialog>
+          <ModeToggle />
         </div>
 
         {/* Mobile Menu */}
