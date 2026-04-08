@@ -1,13 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  IconChartLine,
-  IconCertificate,
-  IconSchool,
-  IconPigMoney,
-  IconTrendingUp,
-  IconUsersGroup,
-  IconStack2,
-} from "@tabler/icons-react";
+import { IconChartLine, IconSchool, IconStack2 } from "@tabler/icons-react";
 
 const features = [
   {

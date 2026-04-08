@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { IconMenu2 } from "@tabler/icons-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
@@ -13,10 +12,6 @@ import { ModeToggle } from "../../../components/theme-toggle";
 const navLinks = [
   { label: "Fitur", href: "#features" },
   { label: "Tentang", href: "#about" },
-  { label: "Cara Kerja", href: "#how-it-works" },
-  { label: "Harga", href: "#pricing" },
-  { label: "Testimoni", href: "#testimonials" },
-  { label: "FAQ", href: "#faq" },
 ];
 
 export function Navbar() {
