@@ -5,7 +5,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { IconMenu2 } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTheme } from "next-themes";
 import { WaitlistDialog } from "../waitlist-dialog";
 import { ModeToggle } from "../../../components/theme-toggle";
 
@@ -20,6 +21,12 @@ const navLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleLinkClick = () => {
     setIsOpen(false);
@@ -32,7 +39,15 @@ export function Navbar() {
         <Link href="/" className="flex items-center gap-2">
           {/*<h1 className="text-2xl font-bold">Portofun</h1>*/}
           {/*eslint-disable-next-line @next/next/no-img-element*/}
-          <img src={"/portofun.svg"} alt="Portofun" className="w-32" />
+          <img
+            src={
+              mounted && resolvedTheme === "dark"
+                ? "/portofun-dark.svg"
+                : "/portofun.svg"
+            }
+            alt="Portofun"
+            className="w-32"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -73,7 +88,15 @@ export function Navbar() {
                 onClick={handleLinkClick}
               >
                 {/*eslint-disable-next-line @next/next/no-img-element*/}
-                <img src={"/portofun.svg"} alt="Portofun" className="w-24" />
+                <img
+                  src={
+                    mounted && resolvedTheme === "dark"
+                      ? "/portofun-dark.svg"
+                      : "/portofun.svg"
+                  }
+                  alt="Portofun"
+                  className="w-24"
+                />
               </Link>
 
               {/* Mobile Links */}

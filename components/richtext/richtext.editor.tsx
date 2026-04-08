@@ -22,7 +22,7 @@ const extensions = [
 /// Define editor styles
 const editorClassName = [
   // Main editor styles
-  "tiptap rounded-md bg-background text-sm leading-6 outline-none",
+  "tiptap rounded-md bg-background dark:bg-card text-sm leading-6 outline-none",
   // Typography styles for <p>
   "[&_p]:my-2",
   // Typography styles for <ul>

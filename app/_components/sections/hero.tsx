@@ -1,10 +1,20 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import { IconArrowRight, IconBook } from "@tabler/icons-react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { WaitlistDialog } from "../waitlist-dialog";
 
 export function Hero() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 py-10">
       {/* Decorative elements */}
@@ -77,7 +87,14 @@ export function Hero() {
           </div>*/}
         </div>
         <div className="hidden md:flex justify-center">
-          <MacbookScroll src={`/assets/dashboard.png`} showGradient={true} />
+          <MacbookScroll
+            src={
+              mounted && resolvedTheme === "dark"
+                ? "/assets/dashboard-dark.png"
+                : "/assets/dashboard.png"
+            }
+            showGradient={true}
+          />
         </div>
       </div>
     </section>

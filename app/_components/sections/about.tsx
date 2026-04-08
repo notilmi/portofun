@@ -1,10 +1,20 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { IconArrowRight, IconCheck } from "@tabler/icons-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { WaitlistDialog } from "../waitlist-dialog";
 
 export function About() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <section id="about" className="overflow-hidden py-24 lg:py-32">
       <div className="container mx-auto">
@@ -77,7 +87,11 @@ export function About() {
           {/* Image side */}
           <div className="relative aspect-4/3 overflow-hidden bg-muted lg:aspect-auto lg:h-full lg:min-h-[600px]">
             <Image
-              src="/assets/learning-page.png"
+              src={
+                mounted && resolvedTheme === "dark"
+                  ? "/assets/learning-page-dark.png"
+                  : "/assets/learning-page.png"
+              }
               alt="Portofun Dashboard - Platform pembelajaran investasi interaktif"
               fill
               className="object-cover object-left"
