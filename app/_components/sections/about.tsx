@@ -45,8 +45,6 @@ export function About() {
                 {[
                   "Dashboard interaktif untuk tracking progress",
                   "Simulasi trading tanpa risiko kehilangan uang",
-                  "Analisis saham dan reksa dana real-time",
-                  "Mentoring dari investor profesional",
                   "Update materi dan market insight terbaru",
                 ].map((feature) => (
                   <div key={feature} className="flex items-start gap-3">
