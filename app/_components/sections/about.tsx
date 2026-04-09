@@ -31,21 +31,27 @@ export function About() {
             <div className="relative z-10 flex flex-col gap-8">
               <div className="flex flex-col gap-4">
                 <h2 className="text-balance text-4xl font-bold text-primary-foreground lg:text-5xl">
-                  Platform Edukasi Finansial Terlengkap
+                  Kenapa Portofun?
                 </h2>
-                <p className="text-balance text-lg text-primary-foreground/90 lg:text-xl">
-                  Dapatkan akses ke ratusan materi pembelajaran, simulasi
-                  portfolio real-time, dan bimbingan langsung dari praktisi
-                  pasar modal bersertifikat. Semua dalam satu platform.
-                </p>
+                <div className="space-y-4 text-balance text-lg text-primary-foreground/90 lg:text-xl">
+                  <p>
+                    Banyak generasi muda sekarang sudah familiar dengan dunia investasi—terutama dari media sosial. Setiap hari, kita melihat rekomendasi saham, tren investasi, dan konten edukasi yang terlihat mudah diikuti.
+                  </p>
+                  <p>
+                    Sekilas terlihat sederhana. Tapi di balik itu, sering kali pemahaman kita belum benar-benar terbentuk. Akhirnya, keputusan lebih sering karena tren—bukan karena benar-benar memahami apa yang dilakukan.
+                  </p>
+                  <p className="font-semibold">
+                    Di sinilah Portofun hadir sebagai solusi edukasi yang terstruktur dan mudah dipahami.
+                  </p>
+                </div>
               </div>
 
               {/* Feature list */}
               <div className="flex flex-col gap-3">
                 {[
-                  "Dashboard interaktif untuk tracking progress",
-                  "Simulasi trading tanpa risiko kehilangan uang",
-                  "Update materi dan market insight terbaru",
+                  "Belajar konsep secara bertahap dengan metode terstruktur",
+                  "Memahami hubungan antar konsep dalam investasi",
+                  "Melatih cara berpikir sebelum mengambil keputusan",
                 ].map((feature) => (
                   <div key={feature} className="flex items-start gap-3">
                     <div className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary-foreground/20">
