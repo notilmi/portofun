@@ -107,6 +107,12 @@ async function StudentCourseOverviewInner({ params }: PageProps) {
             </Button>
           ) : null}
 
+          <Button asChild variant="default">
+            <Link href={`/learning-center/dashboard/courses/${courseId}/gamemode/progression`}>
+              🎮 Play Mode
+            </Link>
+          </Button>
+
           <Button asChild variant="outline">
             <Link href="/learning-center/dashboard/catalog">
               Jelajahi katalog

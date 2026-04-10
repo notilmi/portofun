@@ -1,0 +1,133 @@
+// Gamification Schema
+
+enum BadgeCategory {
+  COMPLETION
+  STREAK
+  PERFORMANCE
+  TIME
+}
+
+enum BadgeRarity {
+  COMMON
+  UNCOMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
+enum GamificationEventType {
+  MATERIAL_COMPLETED
+  BADGE_EARNED
+  POINTS_AWARDED
+  STREAK_MILESTONE
+  LEVEL_UP
+}
+
+/// Tracks user's total points and current level
+model UserPoints {
+  id              String   @id @default(uuid())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String   @unique @map("user_id")
+  totalPoints     Int      @default(0) @map("total_points")
+  currentLevel    Int      @default(1) @map("current_level")
+  experience      Int      @default(0) @map("experience")
+  lastActivityDate DateTime @default(now()) @map("last_activity_date")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@map("user_points")
+}
+
+/// Tracks badges earned by users
+model UserBadges {
+  id       String   @id @default(uuid())
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String   @map("user_id")
+  badge    Badge    @relation(fields: [badgeId], references: [id], onDelete: Cascade)
+  badgeId  String   @map("badge_id")
+  earnedAt DateTime @default(now()) @map("earned_at")
+
+  @@unique([userId, badgeId])
+  @@index([userId])
+  @@index([badgeId])
+  @@map("user_badges")
+}
+
+/// Tracks user activity streaks
+model UserStreaks {
+  id                String   @id @default(uuid())
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String   @unique @map("user_id")
+  currentStreak     Int      @default(0) @map("current_streak")
+  longestStreak     Int      @default(0) @map("longest_streak")
+  lastActivityDate  DateTime @default(now()) @map("last_activity_date")
+  totalDaysActive   Int      @default(0) @map("total_days_active")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@map("user_streaks")
+}
+
+/// Predefined badge definitions
+model Badge {
+  id          String        @id @default(uuid())
+  name        String        @unique
+  description String
+  category    BadgeCategory
+  criteria    String        @map("criteria")
+  icon        String?
+  rarity      BadgeRarity   @default(COMMON)
+  createdAt   DateTime      @default(now()) @map("created_at")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  userBadges UserBadges[]
+  events     GamificationEvent[]
+
+  @@index([category])
+  @@map("badges")
+}
+
+/// Cached leaderboard data
+model Leaderboard {
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String   @unique @map("user_id")
+  rank        Int
+  points      Int
+  level       Int
+  lastUpdated DateTime @default(now()) @map("last_updated")
+
+  @@index([rank])
+  @@index([points])
+  @@index([userId])
+  @@map("leaderboards")
+}
+
+/// Activity log for gamification events
+model GamificationEvent {
+  id            String                  @id @default(uuid())
+  user          User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String                  @map("user_id")
+  eventType     GamificationEventType   @map("event_type")
+  materialId    String?                 @map("material_id")
+  pointsAwarded Int                     @default(0) @map("points_awarded")
+  badge         Badge?                  @relation(fields: [badgeId], references: [id], onDelete: SetNull)
+  badgeId       String?                 @map("badge_id")
+  timestamp     DateTime                @default(now())
+  createdAt     DateTime                @default(now()) @map("created_at")
+
+  @@index([userId])
+  @@index([eventType])
+  @@index([timestamp])
+  @@index([badgeId])
+  @@map("gamification_events")
+}
+
+// Note: User model relationships are extended in schema.prisma with:
+// - userPoints      UserPoints?
+// - userBadges      UserBadges[]
+// - userStreaks     UserStreaks?
+// - leaderboard     Leaderboard?
+// - gamificationEvents GamificationEvent[]

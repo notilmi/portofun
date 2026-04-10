@@ -1,0 +1,145 @@
+
+> portofun@0.1.0 test
+> vitest
+
+
+[1m[30m[44m DEV [49m[39m[22m [34mv4.1.4 [39m[90mC:/Users/HP/Documents/Projects/portofun[39m
+
+ [32mΓ£ô[39m domain/services/__tests__/gamification.service.test.ts [2m([22m[2m44 tests[22m[2m)[22m[32m 39[2mms[22m[39m
+ [32mΓ£ô[39m app/learning-center/dashboard/courses/[courseId]/gamemode/__tests__/e2e.test.ts [2m([22m[2m48 tests[22m[2m)[22m[32m 45[2mms[22m[39m
+stderr | server/actions/__tests__/leaderboard.test.ts
+2026-04-10T12:03:02.490Z WARN [Better Auth]: [better-auth] Base URL could not be determined. Please set a valid base URL using the baseURL config option or the BETTER_AUTH_URL environment variable. Without this, callbacks and redirects may not work correctly.
+
+stderr | server/actions/__tests__/leaderboard.test.ts > Leaderboard Functionality Tests
+User user-1 may already exist: Error: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+    at C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at PrismaPgAdapter.startTransaction (file:///C:/Users/HP/Documents/Projects/portofun/node_modules/.pnpm/@prisma+adapter-pg@7.6.0/node_modules/@prisma/adapter-pg/dist/index.mjs:684:18)
+    at Vt.#r (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:53255)
+    at Vt.startInternalTransaction (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:52218)
+    at e.interpretNode (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:45996)
+    at e.run (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:43315)
+    at execute (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:57:815)
+    at jt.request (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:58:2399)
+    at Object.singleLoader (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:65:6569) {
+  clientVersion: '7.6.0'
+}
+
+stderr | server/actions/__tests__/leaderboard.test.ts > Leaderboard Functionality Tests
+User user-2 may already exist: Error: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+    at C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at PrismaPgAdapter.startTransaction (file:///C:/Users/HP/Documents/Projects/portofun/node_modules/.pnpm/@prisma+adapter-pg@7.6.0/node_modules/@prisma/adapter-pg/dist/index.mjs:684:18)
+    at Vt.#r (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:53255)
+    at Vt.startInternalTransaction (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:52218)
+    at e.interpretNode (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:45996)
+    at e.run (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:43315)
+    at execute (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:57:815)
+    at jt.request (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:58:2399)
+    at Object.singleLoader (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:65:6569) {
+  clientVersion: '7.6.0'
+}
+
+stderr | server/actions/__tests__/leaderboard.test.ts > Leaderboard Functionality Tests
+User user-3 may already exist: Error: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+    at C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at PrismaPgAdapter.startTransaction (file:///C:/Users/HP/Documents/Projects/portofun/node_modules/.pnpm/@prisma+adapter-pg@7.6.0/node_modules/@prisma/adapter-pg/dist/index.mjs:684:18)
+    at Vt.#r (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:53255)
+    at Vt.startInternalTransaction (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:52218)
+    at e.interpretNode (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:45996)
+    at e.run (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:43315)
+    at execute (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:57:815)
+    at jt.request (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:58:2399)
+    at Object.singleLoader (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:65:6569) {
+  clientVersion: '7.6.0'
+}
+
+stderr | server/actions/__tests__/leaderboard.test.ts > Leaderboard Functionality Tests
+User user-4 may already exist: Error: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+    at C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at PrismaPgAdapter.startTransaction (file:///C:/Users/HP/Documents/Projects/portofun/node_modules/.pnpm/@prisma+adapter-pg@7.6.0/node_modules/@prisma/adapter-pg/dist/index.mjs:684:18)
+    at Vt.#r (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:53255)
+    at Vt.startInternalTransaction (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:52218)
+    at e.interpretNode (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:45996)
+    at e.run (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:43315)
+    at execute (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:57:815)
+    at jt.request (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:58:2399)
+    at Object.singleLoader (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:65:6569) {
+  clientVersion: '7.6.0'
+}
+
+stderr | server/actions/__tests__/leaderboard.test.ts > Leaderboard Functionality Tests
+User user-5 may already exist: Error: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+    at C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\pg-pool@3.13.0_pg@8.20.0\node_modules\pg-pool\index.js:45:11
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at PrismaPgAdapter.startTransaction (file:///C:/Users/HP/Documents/Projects/portofun/node_modules/.pnpm/@prisma+adapter-pg@7.6.0/node_modules/@prisma/adapter-pg/dist/index.mjs:684:18)
+    at Vt.#r (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:53255)
+    at Vt.startInternalTransaction (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:52218)
+    at e.interpretNode (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:45996)
+    at e.run (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:11:43315)
+    at execute (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:57:815)
+    at jt.request (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:58:2399)
+    at Object.singleLoader (C:\Users\HP\Documents\Projects\portofun\node_modules\.pnpm\@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284\node_modules\@prisma\client\runtime\client.js:65:6569) {
+  clientVersion: '7.6.0'
+}
+
+ [31mΓ¥»[39m server/actions/__tests__/leaderboard.test.ts [2m([22m[2m32 tests[22m[2m | [22m[33m32 skipped[39m[2m)[22m[32m 248[2mms[22m[39m
+       [2m[90mΓåô[39m[22m should rank users by points in descending order
+       [2m[90mΓåô[39m[22m should assign correct rank numbers sequentially
+       [2m[90mΓåô[39m[22m should handle ties by assigning same rank to tied users
+       [2m[90mΓåô[39m[22m should support pagination with limit parameter
+       [2m[90mΓåô[39m[22m should handle pagination across large leaderboards
+       [2m[90mΓåô[39m[22m should tag leaderboard cache properly
+       [2m[90mΓåô[39m[22m should invalidate cache when user points change
+       [2m[90mΓåô[39m[22m should persist cache when no changes occur
+       [2m[90mΓåô[39m[22m should not have cache interference between different users
+       [2m[90mΓåô[39m[22m should revalidate leaderboard after bulk point changes
+       [2m[90mΓåô[39m[22m should calculate correct rank for user
+       [2m[90mΓåô[39m[22m should calculate percentile correctly
+       [2m[90mΓåô[39m[22m should update rank when user points change
+       [2m[90mΓåô[39m[22m should handle user with 0 points (not in leaderboard)
+       [2m[90mΓåô[39m[22m should return valid totalUsers count in rank
+       [2m[90mΓåô[39m[22m should update leaderboard when user gets points
+       [2m[90mΓåô[39m[22m should update leaderboard when user earns badge
+       [2m[90mΓåô[39m[22m should reflect streak changes in user rank
+       [2m[90mΓåô[39m[22m should maintain consistency across concurrent point awards
+       [2m[90mΓåô[39m[22m should handle single user leaderboard
+       [2m[90mΓåô[39m[22m should consistently order tied users
+       [2m[90mΓåô[39m[22m should handle user at 0 points correctly
+       [2m[90mΓåô[39m[22m should perform well with large number of users
+       [2m[90mΓåô[39m[22m should handle rapid successive updates
+       [2m[90mΓåô[39m[22m should verify ties with secondary sorting
+       [2m[90mΓåô[39m[22m should track and report cache hits vs misses
+       [2m[90mΓåô[39m[22m should measure leaderboard query performance
+       [2m[90mΓåô[39m[22m should measure points award performance
+       [2m[90mΓåô[39m[22m should demonstrate cache effectiveness for repeated rank queries
+       [2m[90mΓåô[39m[22m should validate baseline performance assumptions
+       [2m[90mΓåô[39m[22m should handle invalid user ID gracefully
+       [2m[90mΓåô[39m[22m should maintain data integrity during partial failures
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ» Failed Suites 1 ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»
+
+ FAIL  server/actions/__tests__/leaderboard.test.ts > Leaderboard Functionality Tests
+Error: SASL: SCRAM-SERVER-FIRST-MESSAGE: client password must be a string
+ Γ¥» node_modules/.pnpm/pg-pool@3.13.0_pg@8.20.0/node_modules/pg-pool/index.js:45:11
+ Γ¥» PrismaPgAdapter.startTransaction node_modules/.pnpm/@prisma+adapter-pg@7.6.0/node_modules/@prisma/adapter-pg/dist/index.mjs:684:18
+ Γ¥» Vt.#r node_modules/.pnpm/@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284/node_modules/@prisma/client-engine-runtime/src/transaction-manager/transaction-manager.ts:163:30
+ Γ¥» Vt.startInternalTransaction node_modules/.pnpm/@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284/node_modules/@prisma/client-engine-runtime/src/transaction-manager/transaction-manager.ts:96:11
+ Γ¥» e.interpretNode node_modules/.pnpm/@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284/node_modules/@prisma/client-engine-runtime/src/interpreter/query-interpreter.ts:259:32
+ Γ¥» e.run node_modules/.pnpm/@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284/node_modules/@prisma/client-engine-runtime/src/interpreter/query-interpreter.ts:94:22
+ Γ¥» execute node_modules/.pnpm/@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284/node_modules/@prisma/client/src/runtime/core/engines/client/LocalExecutor.ts:81:11
+ Γ¥» jt.request node_modules/.pnpm/@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284/node_modules/@prisma/client/src/runtime/core/engines/client/ClientEngine.ts:498:21
+ Γ¥» Object.singleLoader node_modules/.pnpm/@prisma+client@7.6.0_prisma_52eca79d831808847f7df451b475b284/node_modules/@prisma/client/src/runtime/RequestHandler.ts:112:25
+
+ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/1]ΓÄ»
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m2 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m92 passed[39m[22m[2m | [22m[33m32 skipped[39m[90m (124)[39m
+[2m   Start at [22m 19:02:55
+[2m   Duration [22m 7.86s[2m (transform 12.41s, setup 0ms, import 15.18s, tests 332ms, environment 1ms)[22m
+
+[1m[30m[41m FAIL [49m[39m[22m [31mTests failed. Watching for file changes...[39m
+       [2mpress [22m[1mh[22m[2m to show help[22m[2m, [22m[2mpress [22m[1mq[22m[2m to quit[22m

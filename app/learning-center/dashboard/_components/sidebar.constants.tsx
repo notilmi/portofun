@@ -5,15 +5,15 @@ export type DashboardRoute = {
 
 export const DASHBOARD_ROUTES: DashboardRoute[] = [
   {
-    label: "Dasbor",
+    label: "🚀 Dasbor",
     href: "/learning-center/dashboard",
   },
   {
-    label: "Katalog",
+    label: "📚 Katalog",
     href: "/learning-center/dashboard/catalog",
   },
   {
-    label: "Pembelajaran Saya",
+    label: "📖 Pembelajaran Saya",
     href: "/learning-center/dashboard/my-learnings",
   },
 ];
@@ -21,7 +21,7 @@ export const DASHBOARD_ROUTES: DashboardRoute[] = [
 export const ADMIN_DASHBOARD_ROUTES: DashboardRoute[] = DASHBOARD_ROUTES.concat(
   [
     {
-      label: "Manajemen Kursus",
+      label: "🎓 Manajemen Kursus",
       href: "/learning-center/dashboard/admin/courses",
     },
   ],
