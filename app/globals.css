@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 @theme inline {
@@ -89,7 +89,7 @@ html {
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
+    --background: oklch(0.2046 0 0);
     --foreground: oklch(0.985 0 0);
     --card: oklch(0.205 0 0);
     --card-foreground: oklch(0.985 0 0);

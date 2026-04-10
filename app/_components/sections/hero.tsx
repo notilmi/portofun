@@ -17,22 +17,8 @@ export function Hero() {
   }, []);
   return (
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 py-10">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 z-10 overflow-hidden">
-        <div className="absolute left-1/4 top-20 size-64 rounded-full bg-primary/10 dark:bg-primary/40 blur-3xl" />
-        <div className="absolute bottom-20 right-1/4 size-96 rounded-full bg-accent/10 dark:bg-accent/40 blur-3xl" />
-      </div>
-
       <div className="container mx-auto max-w-6xl">
         <div className="flex flex-col items-center gap-8 text-center">
-          {/* Badge */}
-          {/*<div className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-sm backdrop-blur-sm">
-            <IconSparkles className="size-4 text-primary" />
-            <span className="text-muted-foreground">
-              Platform Edukasi Finansial #1 di Indonesia
-            </span>
-          </div>*/}
-
           {/* Main heading */}
           <div className="flex flex-col gap-4">
             <h1 className="text-balance text-5xl font-bold leading-tight tracking-tight lg:text-7xl">
